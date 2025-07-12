@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Learning Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Body Styling */
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light grey background */
+            color: #333; /* Dark grey text */
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for dark mode */
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #1a1a1a; /* Dark background */
+            color: #e0e0e0; /* Light text */
+        }
+
+        /* Header Section Styling */
+        .header {
+            background-color: #fff; /* White background */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            position: sticky; /* Keeps header visible when scrolling */
+            top: 0;
+            z-index: 1000; /* Ensures header is on top of other content */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .header {
+            background-color: #2c2c2c; /* Darker header in dark mode */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Logo Styling - for SVG text logo */
+        .site-logo {
+            height: 30px; /* Controls the height of the SVG logo */
+            width: auto; /* Allows width to adjust proportionally */
+            margin-right: 20px;
+            overflow: visible; /* Ensure text is not clipped */
+        }
+
+        .site-logo text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700; /* Bold text */
+            font-size: 24px; /* Adjust font size within SVG */
+            fill: #28a745; /* Green color for the logo text */
+            transition: fill 0.3s ease;
+        }
+
+        body.dark-mode .site-logo text {
+            fill: #e0e0e0; /* Lighter color in dark mode */
+        }
+
+
+        .nav-link {
+            text-decoration: none; /* No underline */
+            color: #333;
+            padding: 8px 15px;
+            font-weight: 600; /* Semi-bold */
+            transition: color 0.3s ease; /* Smooth color change on hover */
+        }
+
+        body.dark-mode .nav-link {
+            color: #e0e0e0; /* Light text in dark mode */
+        }
+
+        .nav-link:hover {
+            color: #28a745; /* Green color on hover */
+        }
+
+        /* Dropdown Menu Styling */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: #f9f9f9; /* Light background for dropdown items */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Shadow for dropdown */
+            z-index: 1;
+            border-radius: 8px; /* Rounded corners */
+            overflow: hidden; /* Hides anything outside the rounded corners */
+            top: 100%; /* Positions dropdown right below the button */
+            left: 0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .dropdown-content {
+            background-color: #3a3a3a;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode .dropdown-content a {
+            color: #e0e0e0;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        body.dark-mode .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Header Right Icons and Button */
+        .header-right .icon-button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            margin-left: 15px;
+            cursor: pointer;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .header-right .icon-button {
+            color: #ccc;
+        }
+
+        .header-right .icon-button:hover {
+            color: #28a745;
+        }
+
+        .sign-in-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .sign-in-button:hover {
+            background-color: #218838;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .hero-search-section {
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-bottom: 30px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .hero-search-section {
+            background-color: #2c2c2c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            padding: 10px 20px;
+            background-color: #fff;
+            max-width: 600px;
+            margin: 20px auto;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark-mode .hero-search-container {
+            background-color: #3a3a3a;
+            border-color: #555;
+        }
+
+        .hero-search-container input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            padding: 8px 0;
+            background-color: transparent;
+            font-size: 18px;
+            color: #333;
+        }
+
+        body.dark-mode .hero-search-container input {
+            color: #e0e0e0;
+        }
+
+        .hero-search-container .search-icon {
+            color: #888;
+            cursor: pointer;
+            margin-left: 15px;
+            font-size: 22px;
+        }
+
+        body.dark-mode .hero-search-container .search-icon {
+            color: #ccc;
+        }
+
+        /* Search Suggestions Dropdown */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 10;
+            display: none;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .search-suggestions {
+            background-color: #3a3a3a;
+            border-color: #555;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-suggestions .suggestion-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            text-align: left;
+            color: #333;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        body.dark-mode .search-suggestions .suggestion-item {
+            color: #e0e0e0;
+        }
+
+        .search-suggestions .suggestion-item:hover {
+            background-color: #e6f7ed;
+            color: #28a745;
+        }
+
+        body.dark-mode .search-suggestions .suggestion-item:hover {
+            background-color: #444;
+            color: #e0e0e0;
+        }
+
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quick-link-button {
+            background-color: #e6f7ed;
+            color: #28a745;
+            border: 1px solid #28a745;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark-mode .quick-link-button {
+            background-color: #218838;
+            color: #fff;
+            border-color: #28a745;
+        }
+
+        .quick-link-button:hover {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        /* New Section Styling */
+        .language-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .language-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .language-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .language-content h1 {
+            color: #e0e0e0;
+        }
+
+        .language-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .language-content p {
+            color: #ccc;
+        }
+
+        .language-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .language-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .language-button.secondary {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        body.dark-mode .language-button.secondary {
+            background-color: #444;
+            color: #e0e0e0;
+            border-color: #666;
+        }
+
+        .language-button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .language-button.secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        body.dark-mode .language-button.secondary:hover {
+            background-color: #555;
+        }
+
+        .code-example-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .code-example-container {
+            background-color: #3a3a3a;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-example-container h3 {
+            font-size: 22px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .code-example-container h3 {
+            color: #e0e0e0;
+        }
+
+        .code-block {
+            background-color: #f0f0f0;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 15px;
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode .code-block {
+            background-color: #222;
+            color: #eee;
+        }
+
+        .try-it-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            align-self: flex-start;
+            transition: background-color 0.3s ease;
+        }
+
+        .try-it-button:hover {
+            background-color: #218838;
+        }
+
+        /* All Topics Section Styling */
+        .all-topics-section {
+            display: none;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .all-topics-section {
+            background-color: #2c2c2c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .all-topics-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .all-topics-section h2 {
+            color: #e0e0e0;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body.dark-mode .topic-card {
+            background-color: #3a3a3a;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .topic-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .topic-card i {
+            font-size: 40px;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .topic-card h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .topic-card h4 {
+            color: #e0e0e0;
+        }
+
+        .topic-card p {
+            font-size: 14px;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .topic-card p {
+            color: #ccc;
+        }
+
+        .close-topics-button {
+            display: block;
+            margin: 30px auto 0;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-topics-button:hover {
+            background-color: #c82333;
+        }
+
+
+        /* Cookie Consent Banner */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .cookie-consent {
+            background-color: #444;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .cookie-consent a {
+            color: #28a745;
+            text-decoration: underline;
+            margin-left: 5px;
+        }
+
+        .cookie-consent-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .cookie-consent-button:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive Adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+            .header-left {
+                width: 100%;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: space-around;
+                margin-top: 10px;
+            }
+
+            .search-container {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .nav-link, .dropdown {
+                margin-bottom: 5px;
+            }
+
+            .hero-search-section {
+                padding: 20px;
+            }
+
+            .hero-search-container {
+                max-width: 90%;
+            }
+
+            .quick-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .language-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .language-content, .code-example-container {
+                width: 90%;
+                max-width: 100%;
+            }
+
+            .language-content h1 {
+                font-size: 36px;
+            }
+
+            .all-topics-section {
+                padding: 20px;
+            }
+
+            .all-topics-section h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-right {
+                flex-wrap: wrap;
+            }
+
+            .sign-in-button {
+                margin-top: 10px;
+            }
+
+            .hero-search-container input {
+                font-size: 16px;
+            }
+
+            .quick-link-button {
+                width: 90%;
+            }
+
+            .cookie-consent {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <svg class="site-logo" viewBox="0 0 150 30" preserveAspectRatio="xMidYMid meet">
+                <text x="0" y="24">LearnCode</text>
+            </svg>
+            <div class="dropdown">
+                <a href="#" class="nav-link">Tutorials <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#" target="_blank">Python Tutorial</a>
+                    <a href="#" target="_blank">JavaScript Tutorial</a>
+                    <a href="#" target="_blank">HTML Tutorial</a>
+                    <a href="#" target="_blank">CSS Tutorial</a>
+                    <a href="#" target="_blank">Java Tutorial</a>
+                    <a href="#" target="_blank">C++ Tutorial</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="nav-link">Resources <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#" target="_blank">Blog</a>
+                    <a href="#" target="_blank">Community Forum</a>
+                    <a href="#" target="_blank">Contact Us</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="nav-link">Languages <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#" target="_blank">Python</a>
+                    <a href="#" target="_blank">JavaScript</a>
+                    <a href="#" target="_blank">HTML/CSS</a>
+                    <a href="#" target="_blank">Java</a>
+                    <a href="#" target="_blank">C++</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="icon-button"><i class="fas fa-bell"></i></button>
+            <button class="icon-button" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+            <button class="sign-in-button">Sign In</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-search-section">
+            <div class="hero-search-container">
+                <input type="text" placeholder="Enter To Search" id="mainSearchInput">
+                <i class="fas fa-search search-icon" id="searchIcon"></i>
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+            <div class="quick-links">
+                <button class="quick-link-button">Explore New Code</button>
+                <button class="quick-link-button">Learn to Code</button>
+                <button class="quick-link-button">Creat A Code</button>
+            </div>
+        </section>
+
+        <section class="language-section">
+            <div class="language-content">
+                <h1>Explore Programming</h1>
+                <p>Learn to build amazing things with code! Our tutorials and examples make learning fun and easy for everyone.</p>
+                <div class="language-buttons">
+                    <a href="#" class="language-button" id="startLearningNowButton">Start Learning Now</a>
+                    <a href="#" class="language-button secondary" id="viewAllTopicsButton">View All Topics</a>
+                </div>
+            </div>
+            <div class="code-example-container">
+                <h3>HTML Example: Basic Structure</h3>
+                <pre class="code-block" id="htmlCodeExample">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello, Web!&lt;/h1&gt;
+  &lt;p&gt;This is a simple paragraph.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                <button class="try-it-button" id="tryItButton">Try It Yourself</button>
+            </div>
+        </section>
+
+        <section class="all-topics-section" id="allTopicsSection">
+            <h2>All Learning Topics</h2>
+            <div class="topics-grid" id="topicsGrid">
+                </div>
+            <button class="close-topics-button" id="closeTopicsButton">Close Topics</button>
+        </section>
+    </main>
+
+    <div class="cookie-consent" id="cookieConsentBanner">
+        <p>We use cookies to make your experience awesome! By using our site, you agree to our <a href="#">Cookie Policy</a> & <a href="#">Privacy Policy</a></p>
+        <button class="cookie-consent-button" id="gotItButton">Got it!</button>
+    </div>
+
+    <script>
+        // JavaScript to handle the cookie consent banner
+        document.addEventListener('DOMContentLoaded', () => {
+            const cookieConsentBanner = document.getElementById('cookieConsentBanner');
+            const gotItButton = document.getElementById('gotItButton');
+            const mainSearchInput = document.getElementById('mainSearchInput');
+            const searchIcon = document.getElementById('searchIcon');
+            const searchSuggestions = document.getElementById('searchSuggestions');
+            const tryItButton = document.getElementById('tryItButton');
+            const htmlCodeExample = document.getElementById('htmlCodeExample');
+            const viewAllTopicsButton = document.getElementById('viewAllTopicsButton');
+            const startLearningNowButton = document.getElementById('startLearningNowButton'); // Get the new button
+            const allTopicsSection = document.getElementById('allTopicsSection');
+            const topicsGrid = document.getElementById('topicsGrid');
+            const closeTopicsButton = document.getElementById('closeTopicsButton');
+
+            // Cookie Consent Logic
+            if (localStorage.getItem('cookieConsent') === 'accepted') {
+                cookieConsentBanner.style.display = 'none';
+            }
+
+            gotItButton.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'accepted');
+                cookieConsentBanner.style.display = 'none';
+            });
+
+            // Dark Mode Toggle Logic
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+
+            function applyDarkModePreference() {
+                if (localStorage.getItem('darkMode') === 'enabled') {
+                    body.classList.add('dark-mode');
+                    darkModeToggle.querySelector('i').classList.remove('fa-moon');
+                    darkModeToggle.querySelector('i').classList.add('fa-sun');
+                } else {
+                    body.classList.remove('dark-mode');
+                    darkModeToggle.querySelector('i').classList.remove('fa-sun');
+                    darkModeToggle.querySelector('i').classList.add('fa-moon');
+                }
+            }
+
+            applyDarkModePreference();
+
+            darkModeToggle.addEventListener('click', () => {
+                if (body.classList.contains('dark-mode')) {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('darkMode', 'disabled');
+                    darkModeToggle.querySelector('i').classList.remove('fa-sun');
+                    darkModeToggle.querySelector('i').classList.add('fa-moon');
+                } else {
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('darkMode', 'enabled');
+                    darkModeToggle.querySelector('i').classList.remove('fa-moon');
+                    darkModeToggle.querySelector('i').classList.add('fa-sun');
+                }
+            });
+
+            // Search Bar Functionality
+            const predefinedSuggestions = [
+                "HTML Tutorial",
+                "CSS Styling",
+                "JavaScript Basics",
+                "Python Programming",
+                "How to create a login form",
+                "Web Development Guide",
+                "Data Structures",
+                "Algorithms Explained"
+            ];
+
+            function generateSuggestions(query) {
+                const lowerQuery = query.toLowerCase();
+                return predefinedSuggestions.filter(suggestion =>
+                    suggestion.toLowerCase().includes(lowerQuery)
+                ).slice(0, 5);
+            }
+
+            function showSuggestions(suggestions) {
+                searchSuggestions.innerHTML = '';
+                if (suggestions.length > 0) {
+                    suggestions.forEach(suggestion => {
+                        const div = document.createElement('div');
+                        div.classList.add('suggestion-item');
+                        div.textContent = suggestion;
+                        div.addEventListener('click', () => {
+                            mainSearchInput.value = suggestion;
+                            performSearch();
+                            searchSuggestions.style.display = 'none';
+                        });
+                        searchSuggestions.appendChild(div);
+                    });
+                    searchSuggestions.style.display = 'block';
+                } else {
+                    searchSuggestions.style.display = 'none';
+                }
+            }
+
+            function hideSuggestions() {
+                searchSuggestions.style.display = 'none';
+            }
+
+            mainSearchInput.addEventListener('input', () => {
+                const query = mainSearchInput.value.trim();
+                if (query.length > 0) {
+                    const suggestions = generateSuggestions(query);
+                    showSuggestions(suggestions);
+                } else {
+                    hideSuggestions();
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!mainSearchInput.contains(event.target) && !searchSuggestions.contains(event.target)) {
+                    hideSuggestions();
+                }
+            });
+
+            function performSearch() {
+                const query = mainSearchInput.value.trim();
+                if (query) {
+                    window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
+                } else {
+                    const messageBox = document.createElement('div');
+                    messageBox.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background-color: #fff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                        z-index: 2000;
+                        text-align: center;
+                        font-family: 'Inter', sans-serif;
+                        color: #333;
+                    `;
+                    messageBox.innerHTML = `
+                        <p>Please enter a search term!</p>
+                        <button style="
+                            background-color: #28a745;
+                            color: #fff;
+                            border: none;
+                            padding: 8px 15px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            margin-top: 10px;
+                        " onclick="this.parentNode.remove()">OK</button>
+                    `;
+                    document.body.appendChild(messageBox);
+
+                    if (body.classList.contains('dark-mode')) {
+                        messageBox.style.backgroundColor = '#3a3a3a';
+                        messageBox.style.color = '#e0e0e0';
+                        messageBox.querySelector('button').style.backgroundColor = '#218838';
+                    }
+                }
+            }
+
+            mainSearchInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            searchIcon.addEventListener('click', performSearch);
+
+            // "Try It Yourself" button functionality
+            tryItButton.addEventListener('click', () => {
+                const rawCode = htmlCodeExample.textContent
+                                .replace(/&lt;/g, '<')
+                                .replace(/&gt;/g, '>')
+                                .trim();
+                const newWindow = window.open('', '_blank');
+                newWindow.document.write(rawCode);
+                newWindow.document.close();
+            });
+
+            // All Topics functionality
+            const allLearningTopics = [
+                { name: "Build Websites with HTML & CSS", icon: "fab fa-html5", description: "Make your own web pages! HTML builds the page, and CSS makes it look good." },
+                { name: "Interactive Web with JavaScript", icon: "fab fa-js", description: "Add fun actions and make your websites come alive with JavaScript!" },
+                { name: "Code with Python", icon: "fab fa-python", description: "Learn to code cool things with Python, a super popular language!" },
+                { name: "How Websites Work", icon: "fas fa-globe", description: "See what happens behind the scenes when you visit a website." },
+                { name: "Organize Your Data", icon: "fas fa-sitemap", description: "Learn smart ways to keep your information neat and easy to find." },
+                { name: "Problem Solving Steps", icon: "fas fa-brain", description: "Discover how to break down big problems into small, easy steps to solve them." },
+            ];
+
+            function populateAllTopics() {
+                topicsGrid.innerHTML = '';
+                allLearningTopics.forEach(topic => {
+                    const topicCard = document.createElement('a');
+                    topicCard.href = "#";
+                    topicCard.classList.add('topic-card');
+                    topicCard.innerHTML = `
+                        <i class="${topic.icon}"></i>
+                        <h4>${topic.name}</h4>
+                        <p>${topic.description}</p>
+                    `;
+                    topicsGrid.appendChild(topicCard);
+                });
+            }
+
+            // Event listener for "View All Topics" button
+            viewAllTopicsButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                if (allTopicsSection.style.display === 'block') {
+                    allTopicsSection.style.display = 'none';
+                } else {
+                    populateAllTopics();
+                    allTopicsSection.style.display = 'block';
+                    allTopicsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+
+            // Event listener for "Start Learning Now" button
+            startLearningNowButton.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default link behavior
+                populateAllTopics(); // Ensure topics are loaded
+                allTopicsSection.style.display = 'block'; // Make sure the section is visible
+                allTopicsSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll to it
+            });
+
+            closeTopicsButton.addEventListener('click', () => {
+                allTopicsSection.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
