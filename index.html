@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Learning Site</title>
+    <title>My Awesome Learning Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -38,7 +38,7 @@
         }
 
         body.dark-mode .header {
-            background-color: #2c2c2c; /* Darker header in dark mode */
+            background-color: #2c2c2c;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
@@ -64,7 +64,7 @@
         }
 
         body.dark-mode .site-logo text {
-            fill: #e0e0e0; /* Lighter color in dark mode */
+            fill: #e0e0e0;
         }
 
 
@@ -73,15 +73,15 @@
             color: #333;
             padding: 8px 15px;
             font-weight: 600; /* Semi-bold */
-            transition: color 0.3s ease; /* Smooth color change on hover */
+            transition: color 0.3s ease;
         }
 
         body.dark-mode .nav-link {
-            color: #e0e0e0; /* Light text in dark mode */
+            color: #e0e0e0;
         }
 
         .nav-link:hover {
-            color: #28a745; /* Green color on hover */
+            color: #28a745;
         }
 
         /* Dropdown Menu Styling */
@@ -91,15 +91,15 @@
         }
 
         .dropdown-content {
-            display: none; /* Hidden by default */
+            display: none;
             position: absolute;
-            background-color: #f9f9f9; /* Light background for dropdown items */
+            background-color: #f9f9f9;
             min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Shadow for dropdown */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
-            border-radius: 8px; /* Rounded corners */
-            overflow: hidden; /* Hides anything outside the rounded corners */
-            top: 100%; /* Positions dropdown right below the button */
+            border-radius: 8px;
+            overflow: hidden;
+            top: 100%;
             left: 0;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
@@ -264,11 +264,7 @@
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-        body.dark-mode .search-suggestions .suggestion-item {
-            color: #e0e0e0;
-        }
-
-        .search-suggestions .suggestion-item:hover {
+        body.dark-mode .search-suggestions .suggestion-item:hover {
             background-color: #e6f7ed;
             color: #28a745;
         }
@@ -470,6 +466,8 @@
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin-bottom: 30px;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -570,50 +568,222 @@
             background-color: #c82333;
         }
 
-
-        /* Cookie Consent Banner */
-        .cookie-consent {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #333;
-            color: #fff;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
+        /* Styles for generic content sections (initially hidden) */
+        .content-section {
+            display: none; /* Hidden by default */
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        body.dark-mode .cookie-consent {
-            background-color: #444;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
+        body.dark-mode .content-section {
+            background-color: #2c2c2c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .cookie-consent a {
+        .content-section h2 {
+            font-size: 32px;
             color: #28a745;
-            text-decoration: underline;
-            margin-left: 5px;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .cookie-consent-button {
-            background-color: #28a745;
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .content-section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .back-to-home-button {
+            display: block;
+            margin: 30px auto 0;
+            background-color: #007bff; /* Blue button */
             color: #fff;
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 10px 25px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
+            font-size: 16px;
             transition: background-color 0.3s ease;
         }
 
-        .cookie-consent-button:hover {
+        .back-to-home-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* New styles for dynamic tutorial content */
+        .dynamic-tutorial-container {
+            display: none; /* Hidden by default */
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            display: flex; /* Use flexbox for side-by-side layout */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 20px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .dynamic-tutorial-container {
+            background-color: #2c2c2c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .tutorial-sidebar {
+            flex: 0 0 250px; /* Fixed width sidebar */
+            background-color: #f0f2f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .tutorial-sidebar {
+            background-color: #3a3a3a;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .tutorial-sidebar h3 {
+            font-size: 22px;
+            color: #28a745;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .tutorial-sidebar h3 {
+            color: #e0e0e0;
+        }
+
+        .tutorial-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tutorial-sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .tutorial-sidebar a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+            border-radius: 5px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        body.dark-mode .tutorial-sidebar a {
+            color: #e0e0e0;
+        }
+
+        .tutorial-sidebar a:hover,
+        .tutorial-sidebar a.active {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .tutorial-content-area {
+            flex: 1; /* Takes remaining space */
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .tutorial-content-area {
+            background-color: #3a3a3a;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .tutorial-content-area h2 {
+            font-size: 36px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        body.dark-mode .tutorial-content-area h2 {
+            color: #e0e0e0;
+        }
+
+        .tutorial-content-area p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        body.dark-mode .tutorial-content-area p {
+            color: #ccc;
+        }
+
+        .tutorial-content-area pre {
+            background-color: #f0f0f0;
+            border-left: 5px solid #28a745;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 15px;
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode .tutorial-content-area pre {
+            background-color: #222;
+            color: #eee;
+        }
+
+        .tutorial-navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 10px;
+        }
+
+        .tutorial-navigation-buttons button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .tutorial-navigation-buttons button:hover {
             background-color: #218838;
         }
+
+        .tutorial-navigation-buttons button.disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
 
         /* Responsive Adjustments for smaller screens */
         @media (max-width: 768px) {
@@ -678,6 +848,25 @@
             .all-topics-section h2 {
                 font-size: 28px;
             }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .dynamic-tutorial-container {
+                flex-direction: column; /* Stack sidebar and content */
+                padding: 15px;
+            }
+
+            .tutorial-sidebar {
+                flex: 0 0 auto; /* Auto width */
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .tutorial-content-area {
+                padding: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -696,12 +885,6 @@
             .quick-link-button {
                 width: 90%;
             }
-
-            .cookie-consent {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
         }
     </style>
 </head>
@@ -709,35 +892,38 @@
     <header class="header">
         <div class="header-left">
             <svg class="site-logo" viewBox="0 0 150 30" preserveAspectRatio="xMidYMid meet">
-                <text x="0" y="24">LearnCode</text>
+                <text x="0" y="24">CodeSpark</text>
             </svg>
             <div class="dropdown">
                 <a href="#" class="nav-link">Tutorials <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="#" target="_blank">Python Tutorial</a>
-                    <a href="#" target="_blank">JavaScript Tutorial</a>
-                    <a href="#" target="_blank">HTML Tutorial</a>
-                    <a href="#" target="_blank">CSS Tutorial</a>
-                    <a href="#" target="_blank">Java Tutorial</a>
-                    <a href="#" target="_blank">C++ Tutorial</a>
+                    <a href="#" data-topic-id="python-main">Python Tutorial</a>
+                    <a href="#" data-topic-id="javascript-main">JavaScript Tutorial</a>
+                    <a href="#" data-topic-id="html-css-main">HTML Tutorial</a>
+                    <a href="#" data-topic-id="html-css-main">CSS Tutorial</a>
+                    <a href="#" data-topic-id="java-main">Java Tutorial</a>
+                    <a href="#" data-topic-id="cpp-main">C++ Tutorial</a>
+                    <a href="#" data-topic-id="scratch-main">Scratch Tutorial</a>
                 </div>
             </div>
             <div class="dropdown">
                 <a href="#" class="nav-link">Resources <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="#" target="_blank">Blog</a>
-                    <a href="#" target="_blank">Community Forum</a>
-                    <a href="#" target="_blank">Contact Us</a>
+                    <a href="#" data-topic-id="blog-section">Blog</a>
+                    <a href="#" data-topic-id="community-forum-section">Community Forum</a>
+                    <a href="#" data-topic-id="faqs-section">FAQs</a>
+                    <a href="#" data-topic-id="contact-us-section">Contact Us</a>
                 </div>
             </div>
             <div class="dropdown">
                 <a href="#" class="nav-link">Languages <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="#" target="_blank">Python</a>
-                    <a href="#" target="_blank">JavaScript</a>
-                    <a href="#" target="_blank">HTML/CSS</a>
-                    <a href="#" target="_blank">Java</a>
-                    <a href="#" target="_blank">C++</a>
+                    <a href="#" data-topic-id="python-main">Python</a>
+                    <a href="#" data-topic-id="javascript-main">JavaScript</a>
+                    <a href="#" data-topic-id="html-css-main">HTML/CSS</a>
+                    <a href="#" data-topic-id="java-main">Java</a>
+                    <a href="#" data-topic-id="cpp-main">C++</a>
+                    <a href="#" data-topic-id="scratch-main">Scratch</a>
                 </div>
             </div>
         </div>
@@ -794,38 +980,170 @@
                 </div>
             <button class="close-topics-button" id="closeTopicsButton">Close Topics</button>
         </section>
+
+        <!-- Dynamic Tutorial Content Container -->
+        <section class="dynamic-tutorial-container" id="dynamicTutorialContainer">
+            <div class="tutorial-sidebar" id="tutorialSidebar">
+                <!-- Subtopics will be loaded here -->
+            </div>
+            <div class="tutorial-content-area" id="tutorialContentArea">
+                <!-- Main content for selected subtopic will be loaded here -->
+                <div id="currentSubtopicContent"></div>
+                <div class="tutorial-navigation-buttons">
+                    <button id="tutorialHomeButton">Home</button>
+                    <button id="tutorialNextButton">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholder Sections for generic content that don't have detailed subtopics -->
+        <section id="blog-section" class="content-section">
+            <h2>Our Blog</h2>
+            <p>Welcome to our blog! Here you'll find the latest articles, coding tips, and news from the programming world. Stay updated with new technologies and best practices.</p>
+            <p>Check out our latest posts:</p>
+            <ul>
+                <li>"Top 5 Tips for Beginner Coders"</li>
+                <li>"Understanding Web Accessibility"</li>
+                <li>"The Future of AI in Development"</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
+        <section id="community-forum-section" class="content-section">
+            <h2>Community Forum</h2>
+            <p>Join our vibrant community forum! Ask questions, share your projects, and connect with other learners and experienced developers. It's a great place to get help and collaborate.</p>
+            <p>Popular categories:</p>
+            <ul>
+                <li>General Discussions</li>
+                <li>Help & Support</li>
+                <li>Project Showcase</li>
+                <li>Job Board</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
+        <section id="faqs-section" class="content-section">
+            <h2>Frequently Asked Questions</h2>
+            <p>Have questions? We've got answers! Browse our FAQs to find solutions to common queries about our platform, courses, and coding in general.</p>
+            <p>Common questions include:</p>
+            <ul>
+                <li>How do I start learning?</li>
+                <li>What programming language should I learn first?</li>
+                <li>Is coding difficult?</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
+        <section id="contact-us-section" class="content-section">
+            <h2>Contact Us</h2>
+            <p>Need to get in touch? Fill out the form below or reach out to us directly. We're here to help you on your coding journey!</p>
+            <p>You can reach us via:</p>
+            <ul>
+                <li>Email: support@codespark.com</li>
+                <li>Phone: (123) 456-7890</li>
+                <li>Social Media: @CodeSparkOfficial</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
+        <section id="how-websites-work-section" class="content-section">
+            <h2>How Websites Work</h2>
+            <p>Ever wonder what happens when you type a website address? This section explains the magic behind it! You'll learn about web browsers, servers, and how information travels across the internet.</p>
+            <p>Key concepts:</p>
+            <ul>
+                <li>What is a web server?</li>
+                <li>How does your browser get a website?</li>
+                <li>The internet's basic parts.</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
+        <section id="organize-your-data-section" class="content-section">
+            <h2>Organize Your Data</h2>
+            <p>When you have a lot of information, like a list of friends or game scores, you need smart ways to keep it organized. This topic teaches you different ways to store and manage data so it's easy to find and use.</p>
+            <p>Learn about:</p>
+            <ul>
+                <li>Lists and simple collections.</li>
+                <li>Storing information in a structured way.</li>
+                <li>Finding specific pieces of data quickly.</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
+        <section id="problem-solving-steps-section" class="content-section">
+            <h2>Problem Solving Steps</h2>
+            <p>Coding is all about solving problems! This section gives you a step-by-step guide to thinking like a programmer. You'll learn how to break down big challenges into smaller, manageable pieces.</p>
+            <p>You'll practice:</p>
+            <ul>
+                <li>Understanding the problem.</li>
+                <li>Planning your solution.</li>
+                <li>Testing your ideas.</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
+        <section id="make-your-own-games-section" class="content-section">
+            <h2>Make Your Own Games</h2>
+            <p>Dream of creating your own video games? This topic introduces you to the exciting world of game design and development. You'll learn the basic ideas behind making fun and engaging games.</p>
+            <p>Explore:</p>
+            <ul>
+                <li>Game ideas and rules.</li>
+                <li>Characters and levels.</li>
+                <li>Making games interactive.</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
+        <section id="build-phone-apps-section" class="content-section">
+            <h2>Build Phone Apps</h2>
+            <p>Want to create apps for smartphones and tablets? This section gives you an introduction to what it takes to build applications that run on mobile devices. It's a big world, but we'll start with the basics!</p>
+            <p>Learn about:</p>
+            <ul>
+                <li>Basic app ideas.</li>
+                <li>How apps are different from websites.</li>
+                <li>Tools used for app making.</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
+        <section id="database-management-section" class="content-section">
+            <h2>Database Management</h2>
+            <p>Imagine a giant digital filing cabinet where websites keep all their information, like user names, passwords, or product details. This section teaches you how these "databases" work and how to store and get information from them.</p>
+            <p>You'll learn about:</p>
+            <ul>
+                <li>What a database is.</li>
+                <li>How to put information in.</li>
+                <li>How to get information out.</li>
+            </ul>
+            <button class="back-to-home-button">Back to Top</button>
+        </section>
+
     </main>
 
-    <div class="cookie-consent" id="cookieConsentBanner">
-        <p>We use cookies to make your experience awesome! By using our site, you agree to our <a href="#">Cookie Policy</a> & <a href="#">Privacy Policy</a></p>
-        <button class="cookie-consent-button" id="gotItButton">Got it!</button>
-    </div>
-
     <script>
-        // JavaScript to handle the cookie consent banner
         document.addEventListener('DOMContentLoaded', () => {
-            const cookieConsentBanner = document.getElementById('cookieConsentBanner');
-            const gotItButton = document.getElementById('gotItButton');
             const mainSearchInput = document.getElementById('mainSearchInput');
             const searchIcon = document.getElementById('searchIcon');
             const searchSuggestions = document.getElementById('searchSuggestions');
             const tryItButton = document.getElementById('tryItButton');
             const htmlCodeExample = document.getElementById('htmlCodeExample');
             const viewAllTopicsButton = document.getElementById('viewAllTopicsButton');
-            const startLearningNowButton = document.getElementById('startLearningNowButton'); // Get the new button
+            const startLearningNowButton = document.getElementById('startLearningNowButton');
             const allTopicsSection = document.getElementById('allTopicsSection');
             const topicsGrid = document.getElementById('topicsGrid');
             const closeTopicsButton = document.getElementById('closeTopicsButton');
+            const backToHomeButtons = document.querySelectorAll('.back-to-home-button');
 
-            // Cookie Consent Logic
-            if (localStorage.getItem('cookieConsent') === 'accepted') {
-                cookieConsentBanner.style.display = 'none';
-            }
+            // New elements for dynamic tutorial content
+            const dynamicTutorialContainer = document.getElementById('dynamicTutorialContainer');
+            const tutorialSidebar = document.getElementById('tutorialSidebar');
+            const tutorialContentArea = document.getElementById('tutorialContentArea');
+            const currentSubtopicContent = document.getElementById('currentSubtopicContent');
+            const tutorialHomeButton = document.getElementById('tutorialHomeButton');
+            const tutorialNextButton = document.getElementById('tutorialNextButton');
 
-            gotItButton.addEventListener('click', () => {
-                localStorage.setItem('cookieConsent', 'accepted');
-                cookieConsentBanner.style.display = 'none';
-            });
+            let currentTopicData = null; // To store the data of the currently viewed topic
+            let currentSubtopicIndex = 0; // To track the current subtopic
 
             // Dark Mode Toggle Logic
             const darkModeToggle = document.getElementById('darkModeToggle');
@@ -979,29 +1297,190 @@
                 newWindow.document.close();
             });
 
-            // All Topics functionality
+            // All Topics data with subtopics
             const allLearningTopics = [
-                { name: "Build Websites with HTML & CSS", icon: "fab fa-html5", description: "Make your own web pages! HTML builds the page, and CSS makes it look good." },
-                { name: "Interactive Web with JavaScript", icon: "fab fa-js", description: "Add fun actions and make your websites come alive with JavaScript!" },
-                { name: "Code with Python", icon: "fab fa-python", description: "Learn to code cool things with Python, a super popular language!" },
-                { name: "How Websites Work", icon: "fas fa-globe", description: "See what happens behind the scenes when you visit a website." },
-                { name: "Organize Your Data", icon: "fas fa-sitemap", description: "Learn smart ways to keep your information neat and easy to find." },
-                { name: "Problem Solving Steps", icon: "fas fa-brain", description: "Discover how to break down big problems into small, easy steps to solve them." },
+                {
+                    name: "Build Websites with HTML & CSS",
+                    id: "html-css-main",
+                    icon: "fab fa-html5",
+                    description: "Make your own web pages! HTML builds the page, and CSS makes it look good.",
+                    subtopics: [
+                        { id: "html-intro", title: "HTML Introduction", content: "HTML is the standard markup language for Web pages. With HTML you can create your own Website. HTML is easy to learn - You will enjoy it! <br><br> <b>Example:</b> <pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My Web Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello, Web!&lt;/h1&gt;\n  &lt;p&gt;This is a simple paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre>" },
+                        { id: "html-basic", title: "HTML Basic", content: "Learn the fundamental tags that form the backbone of any HTML document, such as `<html>`, `<head>`, `<body>`, `<h1>` to `<h6>`, and `<p>`." },
+                        { id: "html-elements", title: "HTML Elements", content: "Explore the building blocks of HTML pages. An HTML element is defined by a start tag, some content, and an end tag." },
+                        { id: "html-attributes", title: "HTML Attributes", content: "Attributes provide additional information about HTML elements. They are always specified in the start tag and usually come in name/value pairs like: name='value'." },
+                        { id: "css-introduction", title: "CSS Introduction", content: "CSS is used to style the layout of Web pages. It saves a lot of work as it can control the layout of multiple web pages all at once." },
+                        { id: "css-selectors", title: "CSS Selectors", content: "Learn how to target specific HTML elements to apply styles using element, ID, and class selectors." }
+                    ]
+                },
+                {
+                    name: "Interactive Web with JavaScript",
+                    id: "javascript-main",
+                    icon: "fab fa-js",
+                    description: "Add fun actions and make your websites come alive with JavaScript!",
+                    subtopics: [
+                        { id: "js-intro", title: "JS Introduction", content: "JavaScript is the world's most popular programming language. JavaScript is the programming language of the Web. JavaScript is easy to learn." },
+                        { id: "js-variables", title: "JS Variables", content: "Variables are containers for storing data values. In JavaScript, you can declare variables using `var`, `let`, or `const`." },
+                        { id: "js-operators", title: "JS Operators", content: "Operators are used to perform operations on variables and values. Examples include arithmetic, assignment, comparison, and logical operators." }
+                    ]
+                },
+                {
+                    name: "Code with Python",
+                    id: "python-main",
+                    icon: "fab fa-python",
+                    description: "Learn to code cool things with Python, a super popular language!",
+                    subtopics: [
+                        { id: "python-intro", title: "Python Introduction", content: "Python is a popular programming language. It was created by Guido van Rossum, and released in 1991. It is used for: web development (server-side), software development, mathematics, system scripting." },
+                        { id: "python-syntax", title: "Python Syntax", content: "Python syntax is very simple and easy to learn. Unlike other programming languages, Python uses indentation to indicate a block of code." },
+                        { id: "python-variables", title: "Python Variables", content: "Variables are containers for storing data values. Python has no command for declaring a variable." }
+                    ]
+                },
+                {
+                    name: "Drag-and-Drop Coding (Scratch)",
+                    id: "scratch-main",
+                    icon: "fas fa-cat",
+                    description: "Start coding easily by dragging and dropping blocks, great for stories and games!",
+                    subtopics: [
+                        { id: "scratch-intro", title: "Scratch Introduction", content: "Scratch is a visual programming language and online community where children can program their own interactive stories, games, and animations. It's a fantastic way to learn coding basics!" },
+                        { id: "scratch-blocks", title: "Scratch Blocks", content: "Learn about different categories of Scratch blocks like Motion, Looks, Sound, Events, Control, Sensing, Operators, and Variables." }
+                    ]
+                },
+                {
+                    name: "Java for Apps",
+                    id: "java-main",
+                    icon: "fab fa-java",
+                    description: "Learn Java to create apps for computers and phones.",
+                    subtopics: [
+                        { id: "java-intro", title: "Java Introduction", content: "Java is a popular, high-level, object-oriented programming language. It's widely used for enterprise-level applications, Android mobile development, and more." },
+                        { id: "java-syntax", title: "Java Basic Syntax", content: "Understand the basic structure of a Java program, including classes, main method, and statements." }
+                    ]
+                },
+                {
+                    name: "C++ Games & More",
+                    id: "cpp-main",
+                    icon: "fab fa-cuttlefish",
+                    description: "Explore C++ to make fast programs and even video games.",
+                    subtopics: [
+                        { id: "cpp-intro", title: "C++ Introduction", content: "C++ is a powerful, general-purpose programming language often used for game development, operating systems, and high-performance applications. It builds on the C language." },
+                        { id: "cpp-variables", title: "C++ Variables", content: "Learn how to declare and use variables in C++ for storing different types of data." }
+                    ]
+                },
+                // Topics without subtopics will fall back to generic content sections
+                { name: "How Websites Work", id: "how-websites-work-section", icon: "fas fa-globe", description: "See what happens behind the scenes when you visit a website." },
+                { name: "Organize Your Data", id: "organize-your-data-section", icon: "fas fa-sitemap", description: "Learn smart ways to keep your information neat and easy to find." },
+                { name: "Problem Solving Steps", id: "problem-solving-steps-section", icon: "fas fa-brain", description: "Discover how to break down big problems into small, easy steps to solve them." },
+                { name: "Make Your Own Games", id: "make-your-own-games-section", icon: "fas fa-gamepad", description: "Get ideas and tools to design and build your very own games." },
+                { name: "Build Phone Apps", id: "build-phone-apps-section", icon: "fas fa-mobile-alt", description: "Learn how to create applications for smartphones and tablets." },
+                { name: "Database Management", id: "database-management-section", icon: "fas fa-database", description: "Understand how to save and get back information using databases." },
+                { name: "Blog", id: "blog-section", icon: "fas fa-blog", description: "Our latest articles and coding tips." },
+                { name: "Community Forum", id: "community-forum-section", icon: "fas fa-users", description: "Connect with other learners and developers." },
+                { name: "FAQs", id: "faqs-section", icon: "fas fa-question-circle", description: "Find answers to common questions." },
+                { name: "Contact Us", id: "contact-us-section", icon: "fas fa-envelope", description: "Get in touch with our support team." }
             ];
 
             function populateAllTopics() {
                 topicsGrid.innerHTML = '';
                 allLearningTopics.forEach(topic => {
                     const topicCard = document.createElement('a');
-                    topicCard.href = "#";
+                    topicCard.href = `#`; // Handled by click listener
                     topicCard.classList.add('topic-card');
                     topicCard.innerHTML = `
                         <i class="${topic.icon}"></i>
                         <h4>${topic.name}</h4>
                         <p>${topic.description}</p>
                     `;
+                    topicCard.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        if (topic.subtopics) {
+                            displayDetailedTutorial(topic);
+                        } else {
+                            // Fallback for topics without detailed subtopics (shows generic section)
+                            const targetSection = document.getElementById(topic.id);
+                            if (targetSection) {
+                                hideAllContentSections();
+                                allTopicsSection.style.display = 'none';
+                                targetSection.style.display = 'block';
+                                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        }
+                    });
                     topicsGrid.appendChild(topicCard);
                 });
+            }
+
+            function hideAllContentSections() {
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                allTopicsSection.style.display = 'none';
+                dynamicTutorialContainer.style.display = 'none'; // Hide dynamic tutorial container too
+            }
+
+            function displayDetailedTutorial(topic) {
+                hideAllContentSections(); // Hide all other sections
+
+                currentTopicData = topic;
+                currentSubtopicIndex = 0;
+
+                tutorialSidebar.innerHTML = `<h3>${topic.name}</h3><ul></ul>`;
+                const ul = tutorialSidebar.querySelector('ul');
+
+                topic.subtopics.forEach((subtopic, index) => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = `#${subtopic.id}`; // Anchor link within the dynamic tutorial
+                    a.textContent = subtopic.title;
+                    a.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        displaySubtopicContent(index);
+                    });
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                });
+
+                dynamicTutorialContainer.style.display = 'flex'; // Show the tutorial container
+                displaySubtopicContent(currentSubtopicIndex); // Display the first subtopic
+                dynamicTutorialContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            function displaySubtopicContent(index) {
+                if (!currentTopicData || !currentTopicData.subtopics || index < 0 || index >= currentTopicData.subtopics.length) {
+                    return; // Invalid index
+                }
+
+                currentSubtopicIndex = index;
+                const subtopic = currentTopicData.subtopics[currentSubtopicIndex];
+
+                currentSubtopicContent.innerHTML = `
+                    <h2>${subtopic.title}</h2>
+                    <p>${subtopic.content}</p>
+                `;
+
+                // Update active class in sidebar
+                tutorialSidebar.querySelectorAll('a').forEach((link, idx) => {
+                    if (idx === currentSubtopicIndex) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Update navigation buttons state
+                if (currentSubtopicIndex === 0) {
+                    tutorialHomeButton.textContent = "Home"; // First subtopic, "Home" button acts as back to main
+                    tutorialHomeButton.disabled = false;
+                } else {
+                    tutorialHomeButton.textContent = "Previous"; // Not the first, "Previous" button
+                    tutorialHomeButton.disabled = false;
+                }
+
+                if (currentSubtopicIndex < currentTopicData.subtopics.length - 1) {
+                    tutorialNextButton.disabled = false;
+                    tutorialNextButton.classList.remove('disabled');
+                } else {
+                    tutorialNextButton.disabled = true;
+                    tutorialNextButton.classList.add('disabled');
+                }
             }
 
             // Event listener for "View All Topics" button
@@ -1010,6 +1489,7 @@
                 if (allTopicsSection.style.display === 'block') {
                     allTopicsSection.style.display = 'none';
                 } else {
+                    hideAllContentSections(); // Hide any open tutorial sections
                     populateAllTopics();
                     allTopicsSection.style.display = 'block';
                     allTopicsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1018,15 +1498,88 @@
 
             // Event listener for "Start Learning Now" button
             startLearningNowButton.addEventListener('click', (event) => {
-                event.preventDefault(); // Prevent default link behavior
-                populateAllTopics(); // Ensure topics are loaded
-                allTopicsSection.style.display = 'block'; // Make sure the section is visible
-                allTopicsSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll to it
+                event.preventDefault();
+                hideAllContentSections(); // Hide any open tutorial sections
+                populateAllTopics();
+                allTopicsSection.style.display = 'block';
+                allTopicsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
 
             closeTopicsButton.addEventListener('click', () => {
                 allTopicsSection.style.display = 'none';
             });
+
+            // Handle clicks on internal anchor links (for generic content sections)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    // Only handle if it's not part of the dropdown content
+                    if (!this.closest('.dropdown-content') && !this.closest('.tutorial-sidebar')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetSection = document.getElementById(targetId);
+
+                        if (targetSection) {
+                            hideAllContentSections();
+                            targetSection.style.display = 'block';
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            });
+
+            // Event listeners for "Back to Top" buttons in generic content sections
+            backToHomeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.closest('.content-section').style.display = 'none';
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Tutorial navigation buttons event listeners
+            tutorialHomeButton.addEventListener('click', () => {
+                if (currentSubtopicIndex > 0) {
+                    displaySubtopicContent(currentSubtopicIndex - 1); // Go to previous subtopic
+                } else {
+                    // If at the first subtopic, go back to the main page/hero section
+                    hideAllContentSections();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+
+            tutorialNextButton.addEventListener('click', () => {
+                if (currentTopicData && currentSubtopicIndex < currentTopicData.subtopics.length - 1) {
+                    displaySubtopicContent(currentSubtopicIndex + 1);
+                }
+            });
+
+            // Handle clicks on dropdown links to open dynamic tutorials or generic sections
+            document.querySelectorAll('.dropdown-content a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const topicId = this.dataset.topicId;
+                    const foundTopic = allLearningTopics.find(topic => topic.id === topicId);
+
+                    if (foundTopic) {
+                        if (foundTopic.subtopics) {
+                            displayDetailedTutorial(foundTopic);
+                        } else {
+                            // If no subtopics, show the generic content section
+                            const targetSection = document.getElementById(foundTopic.id);
+                            if (targetSection) {
+                                hideAllContentSections();
+                                targetSection.style.display = 'block';
+                                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Ensure a clean state on initial load
+            hideAllContentSections();
         });
     </script>
 </body>
