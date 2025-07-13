@@ -42,11 +42,6 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .header-left, .header-right {
-            display: flex;
-            align-items: center;
-        }
-
         /* Logo Styling - for SVG text logo */
         .site-logo {
             height: 30px; /* Controls the height of the SVG logo */
@@ -391,35 +386,11 @@
             background-color: #555;
         }
 
+        /* Removed .code-example-container from homepage as it's now dynamic */
         .code-example-container {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            display: none; /* Hide this section from the homepage */
         }
 
-        body.dark-mode .code-example-container {
-            background-color: #3a3a3a;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .code-example-container h3 {
-            font-size: 22px;
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .code-example-container h3 {
-            color: #e0e0e0;
-        }
 
         .code-block {
             background-color: #f0f0f0;
@@ -451,6 +422,7 @@
             font-size: 16px;
             align-self: flex-start;
             transition: background-color 0.3s ease;
+            margin-top: 15px; /* Added margin to separate from code block */
         }
 
         .try-it-button:hover {
@@ -892,38 +864,37 @@
     <header class="header">
         <div class="header-left">
             <svg class="site-logo" viewBox="0 0 150 30" preserveAspectRatio="xMidYMid meet">
-                <text x="0" y="24">CodeSpark</text>
+                <text x="0" y="24">LearnCode</text>
             </svg>
             <div class="dropdown">
                 <a href="#" class="nav-link">Tutorials <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="#" data-topic-id="python-main">Python Tutorial</a>
-                    <a href="#" data-topic-id="javascript-main">JavaScript Tutorial</a>
-                    <a href="#" data-topic-id="html-css-main">HTML Tutorial</a>
-                    <a href="#" data-topic-id="html-css-main">CSS Tutorial</a>
-                    <a href="#" data-topic-id="java-main">Java Tutorial</a>
-                    <a href="#" data-topic-id="cpp-main">C++ Tutorial</a>
-                    <a href="#" data-topic-id="php-main">PHP Tutorial</a>
+                    <a data-topic-id="python-main">Python Tutorial</a>
+                    <a data-topic-id="javascript-main">JavaScript Tutorial</a>
+                    <a data-topic-id="html-css-main">HTML Tutorial</a>
+                    <a data-topic-id="html-css-main">CSS Tutorial</a>
+                    <a data-topic-id="java-main">Java Tutorial</a>
+                    <a data-topic-id="cpp-main">C++ Tutorial</a>
+                    <a data-topic-id="php-main">PHP Tutorial</a>
                 </div>
             </div>
             <div class="dropdown">
                 <a href="#" class="nav-link">Resources <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="#" data-topic-id="blog-section">Blog</a>
-                    <a href="#" data-topic-id="community-forum-section">Community Forum</a>
-                    <a href="#" data-topic-id="faqs-section">FAQs</a>
-                    <a href="#" data-topic-id="contact-us-section">Contact Us</a>
+                    <a  data-topic-id="blog-section">Blog</a>
+                    <a  data-topic-id="community-forum-section">Community Forum</a>
+                    <a  data-topic-id="contact-us-section">Contact Us</a>
                 </div>
             </div>
             <div class="dropdown">
                 <a href="#" class="nav-link">Languages <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="#" data-topic-id="python-main">Python</a>
-                    <a href="#" data-topic-id="javascript-main">JavaScript</a>
-                    <a href="#" data-topic-id="html-css-main">HTML/CSS</a>
-                    <a href="#" data-topic-id="java-main">Java</a>
-                    <a href="#" data-topic-id="cpp-main">C++</a>
-                    <a href="#" data-topic-id="php-main">PHP</a>
+                    <a  data-topic-id="html-css-main">HMTL/CSS</a>
+                    <a  data-topic-id="javascript-main">JavaScript</a>
+                    <a  data-topic-id="python-main">Python</a>
+                    <a  data-topic-id="java-main">Java</a>
+                    <a  data-topic-id="cpp-main">C++</a>
+                    <a  data-topic-id="php-main">PHP</a>
                 </div>
             </div>
         </div>
@@ -941,11 +912,6 @@
                 <i class="fas fa-search search-icon" id="searchIcon"></i>
                 <div class="search-suggestions" id="searchSuggestions"></div>
             </div>
-            <div class="quick-links">
-                <button class="quick-link-button">Explore New Code</button>
-                <button class="quick-link-button">Learn to Code</button>
-                <button class="quick-link-button">Creat A Code</button>
-            </div>
         </section>
 
         <section class="language-section">
@@ -957,20 +923,11 @@
                     <a href="#" class="language-button secondary" id="viewAllTopicsButton">View All Topics</a>
                 </div>
             </div>
+            <!-- Removed the static code example container from the homepage -->
             <div class="code-example-container">
                 <h3>HTML Example: Basic Structure</h3>
-                <pre class="code-block" id="htmlCodeExample">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;My Web Page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Hello, Web!&lt;/h1&gt;
-  &lt;p&gt;This is a simple paragraph.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-                <button class="try-it-button" id="tryItButton">Try It Yourself</button>
+                <pre class="code-block" id="htmlCodeExample"></pre>
+                <button class="try-it-button" id="tryItButtonHomepage">Try It Yourself</button>
             </div>
         </section>
 
@@ -1125,8 +1082,7 @@
             const mainSearchInput = document.getElementById('mainSearchInput');
             const searchIcon = document.getElementById('searchIcon');
             const searchSuggestions = document.getElementById('searchSuggestions');
-            const tryItButton = document.getElementById('tryItButton');
-            const htmlCodeExample = document.getElementById('htmlCodeExample');
+            // Removed tryItButton and htmlCodeExample from homepage as they are now dynamic within lessons
             const viewAllTopicsButton = document.getElementById('viewAllTopicsButton');
             const startLearningNowButton = document.getElementById('startLearningNowButton');
             const allTopicsSection = document.getElementById('allTopicsSection');
@@ -1185,8 +1141,8 @@
                     icon: "fab fa-html5",
                     description: "Make your own web pages! HTML builds the page, and CSS makes it look good.",
                     subtopics: [
-                        { id: "html-intro", title: "HTML Introduction", content: "HTML (HyperText Markup Language) is the standard markup language for creating Web pages. It describes the structure of a Web page semantically and originally included cues for the appearance of the document. HTML elements are the building blocks of HTML pages. With HTML, you can create your own Website, adding text, images, and links. It's the skeleton of any webpage. <br><br> <b>Example:</b> <pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My Web Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello, Web!&lt;/h1&gt;\n  &lt;p&gt;This is a simple paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre>" },
-                        { id: "html-basic", title: "HTML Basic", content: "Learn the fundamental tags that form the backbone of any HTML document, such as `<html>`, `<head>`, `<body>`, `<h1>` to `<h6>`, and `<p>`. These are essential for structuring your content." },
+                        { id: "html-intro", title: "HTML Introduction", content: "<h1> What is HTML?</h1> <br> :HTML stands for Hyper Text Markup Language <br> :HTML is the standard markup language for creating Web pages <br> :HTML describes the structure of a Web page <br> :HTML consists of a series of elements <br> :HTML elements tell the browser how to display the content <br> <br> <br> <h1>A Simple HTML Document</h1> <pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My Web Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello, World!&lt;/h1&gt;\n  &lt;p&gt;This is a simple paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre> <br> <br> Example Explained <br> <br> :The &lt;!DOCTYPE html&gt declaration defines that this document is an HTML5 document <br> <br> :The &lt;html&gt element is the root element of an HTML page <br> <br> :The &lt;head&gt element contains meta information about the HTML page <br> <br>  :The &lt;title&gt element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab) <br> <br> :The  &lt;body&gt element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables, lists, etc. <br> <br>  :The &lt;h1&gt element defines a large heading <br> <br> :The &lt;p&gt element defines a paragraph " },
+                        { id: "html-basic", title: "HTML Basic", content: "<h1>HTML Documents</h1> All HTML documents must start with a document type declaration: &lt;!DOCTYPE html&gt;. <br> <br> The HTML document itself begins with &lt;html&gt and ends with &lt;/html&gt;. <br> <br> The visible part of the HTML document is between &lt;body&gt and &lt;/body&gt. <br> <br> <pre><code>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My First HTML Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;My First Heading&lt;/h1&gt;\n  &lt;p&gt;My first paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</code></pre> <button class=\"try-it-button\" data-code-id=\"html-basic-example\">Try it Yourself</button>" },
                         { id: "html-elements", title: "HTML Elements", content: "Explore the various building blocks of HTML pages. An HTML element is defined by a start tag, some content, and an end tag. For example, `<p>This is a paragraph.</p>` is an element." },
                         { id: "html-attributes", title: "HTML Attributes", content: "Attributes provide additional information about HTML elements. They are always specified in the start tag and usually come in name/value pairs like: `href='value'` for links or `src='image.jpg'` for images." },
                         { id: "html-layout", title: "HTML Page Layout", content: "Learn how to structure the overall layout of a webpage using semantic HTML5 elements like `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, and `<footer>`. This improves readability and accessibility." },
@@ -1399,8 +1355,28 @@
 
                 currentSubtopicContent.innerHTML = `
                     <h2>${subtopic.title}</h2>
-                    <p>${subtopic.content}</p>
+                    ${subtopic.content}
                 `;
+
+                // Attach event listener to the "Try it Yourself" button if it exists in the loaded content
+                const tryItButtonInContent = currentSubtopicContent.querySelector('.try-it-button');
+                if (tryItButtonInContent) {
+                    tryItButtonInContent.addEventListener('click', () => {
+                        const codeBlock = currentSubtopicContent.querySelector('pre code');
+                        if (codeBlock) {
+                            const rawCode = codeBlock.textContent
+                                            .replace(/&lt;/g, '<')
+                                            .replace(/&gt;/g, '>')
+                                            .trim();
+                            const newWindow = window.open('', '_blank');
+                            newWindow.document.write(rawCode);
+                            newWindow.document.close();
+                        } else {
+                            alert('No code example found for this "Try it Yourself" button.');
+                        }
+                    });
+                }
+
 
                 // Update active class in sidebar
                 tutorialSidebar.querySelectorAll('a').forEach((link, idx) => {
@@ -1708,16 +1684,8 @@
 
             searchIcon.addEventListener('click', performSearch);
 
-            // "Try It Yourself" button functionality
-            tryItButton.addEventListener('click', () => {
-                const rawCode = htmlCodeExample.textContent
-                                .replace(/&lt;/g, '<')
-                                .replace(/&gt;/g, '>')
-                                .trim();
-                const newWindow = window.open('', '_blank');
-                newWindow.document.write(rawCode);
-                newWindow.document.close();
-            });
+            // Removed the static "Try It Yourself" button and its listener from the homepage
+            // tryItButton.addEventListener('click', ...);
 
             // Ensure a clean state on initial load
             hideAllContentSections();
