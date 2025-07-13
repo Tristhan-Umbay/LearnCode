@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Learning Site</title>
+    <title>My Learning Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -903,7 +903,7 @@
                     <a href="#" data-topic-id="html-css-main">CSS Tutorial</a>
                     <a href="#" data-topic-id="java-main">Java Tutorial</a>
                     <a href="#" data-topic-id="cpp-main">C++ Tutorial</a>
-                    <a href="#" data-topic-id="scratch-main">Scratch Tutorial</a>
+                    <a href="#" data-topic-id="php-main">PHP Tutorial</a>
                 </div>
             </div>
             <div class="dropdown">
@@ -923,7 +923,7 @@
                     <a href="#" data-topic-id="html-css-main">HTML/CSS</a>
                     <a href="#" data-topic-id="java-main">Java</a>
                     <a href="#" data-topic-id="cpp-main">C++</a>
-                    <a href="#" data-topic-id="scratch-main">Scratch</a>
+                    <a href="#" data-topic-id="php-main">PHP</a>
                 </div>
             </div>
         </div>
@@ -1177,126 +1177,6 @@
                 }
             });
 
-            // Search Bar Functionality
-            const predefinedSuggestions = [
-                "HTML Tutorial",
-                "CSS Styling",
-                "JavaScript Basics",
-                "Python Programming",
-                "How to create a login form",
-                "Web Development Guide",
-                "Data Structures",
-                "Algorithms Explained"
-            ];
-
-            function generateSuggestions(query) {
-                const lowerQuery = query.toLowerCase();
-                return predefinedSuggestions.filter(suggestion =>
-                    suggestion.toLowerCase().includes(lowerQuery)
-                ).slice(0, 5);
-            }
-
-            function showSuggestions(suggestions) {
-                searchSuggestions.innerHTML = '';
-                if (suggestions.length > 0) {
-                    suggestions.forEach(suggestion => {
-                        const div = document.createElement('div');
-                        div.classList.add('suggestion-item');
-                        div.textContent = suggestion;
-                        div.addEventListener('click', () => {
-                            mainSearchInput.value = suggestion;
-                            performSearch();
-                            searchSuggestions.style.display = 'none';
-                        });
-                        searchSuggestions.appendChild(div);
-                    });
-                    searchSuggestions.style.display = 'block';
-                } else {
-                    searchSuggestions.style.display = 'none';
-                }
-            }
-
-            function hideSuggestions() {
-                searchSuggestions.style.display = 'none';
-            }
-
-            mainSearchInput.addEventListener('input', () => {
-                const query = mainSearchInput.value.trim();
-                if (query.length > 0) {
-                    const suggestions = generateSuggestions(query);
-                    showSuggestions(suggestions);
-                } else {
-                    hideSuggestions();
-                }
-            });
-
-            document.addEventListener('click', (event) => {
-                if (!mainSearchInput.contains(event.target) && !searchSuggestions.contains(event.target)) {
-                    hideSuggestions();
-                }
-            });
-
-            function performSearch() {
-                const query = mainSearchInput.value.trim();
-                if (query) {
-                    window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
-                } else {
-                    const messageBox = document.createElement('div');
-                    messageBox.style.cssText = `
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background-color: #fff;
-                        padding: 20px;
-                        border-radius: 8px;
-                        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-                        z-index: 2000;
-                        text-align: center;
-                        font-family: 'Inter', sans-serif;
-                        color: #333;
-                    `;
-                    messageBox.innerHTML = `
-                        <p>Please enter a search term!</p>
-                        <button style="
-                            background-color: #28a745;
-                            color: #fff;
-                            border: none;
-                            padding: 8px 15px;
-                            border-radius: 5px;
-                            cursor: pointer;
-                            margin-top: 10px;
-                        " onclick="this.parentNode.remove()">OK</button>
-                    `;
-                    document.body.appendChild(messageBox);
-
-                    if (body.classList.contains('dark-mode')) {
-                        messageBox.style.backgroundColor = '#3a3a3a';
-                        messageBox.style.color = '#e0e0e0';
-                        messageBox.querySelector('button').style.backgroundColor = '#218838';
-                    }
-                }
-            }
-
-            mainSearchInput.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    performSearch();
-                }
-            });
-
-            searchIcon.addEventListener('click', performSearch);
-
-            // "Try It Yourself" button functionality
-            tryItButton.addEventListener('click', () => {
-                const rawCode = htmlCodeExample.textContent
-                                .replace(/&lt;/g, '<')
-                                .replace(/&gt;/g, '>')
-                                .trim();
-                const newWindow = window.open('', '_blank');
-                newWindow.document.write(rawCode);
-                newWindow.document.close();
-            });
-
             // All Topics data with subtopics
             const allLearningTopics = [
                 {
@@ -1305,12 +1185,23 @@
                     icon: "fab fa-html5",
                     description: "Make your own web pages! HTML builds the page, and CSS makes it look good.",
                     subtopics: [
-                        { id: "html-intro", title: "HTML Introduction", content: "HTML is the standard markup language for Web pages. With HTML you can create your own Website. HTML is easy to learn - You will enjoy it! <br><br> <b>Example:</b> <pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My Web Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello, Web!&lt;/h1&gt;\n  &lt;p&gt;This is a simple paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre>" },
-                        { id: "html-basic", title: "HTML Basic", content: "Learn the fundamental tags that form the backbone of any HTML document, such as `<html>`, `<head>`, `<body>`, `<h1>` to `<h6>`, and `<p>`." },
-                        { id: "html-elements", title: "HTML Elements", content: "Explore the building blocks of HTML pages. An HTML element is defined by a start tag, some content, and an end tag." },
-                        { id: "html-attributes", title: "HTML Attributes", content: "Attributes provide additional information about HTML elements. They are always specified in the start tag and usually come in name/value pairs like: name='value'." },
-                        { id: "css-introduction", title: "CSS Introduction", content: "CSS is used to style the layout of Web pages. It saves a lot of work as it can control the layout of multiple web pages all at once." },
-                        { id: "css-selectors", title: "CSS Selectors", content: "Learn how to target specific HTML elements to apply styles using element, ID, and class selectors." }
+                        { id: "html-intro", title: "HTML Introduction", content: "HTML (HyperText Markup Language) is the standard markup language for creating Web pages. It describes the structure of a Web page semantically and originally included cues for the appearance of the document. HTML elements are the building blocks of HTML pages. With HTML, you can create your own Website, adding text, images, and links. It's the skeleton of any webpage. <br><br> <b>Example:</b> <pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My Web Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello, Web!&lt;/h1&gt;\n  &lt;p&gt;This is a simple paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre>" },
+                        { id: "html-basic", title: "HTML Basic", content: "Learn the fundamental tags that form the backbone of any HTML document, such as `<html>`, `<head>`, `<body>`, `<h1>` to `<h6>`, and `<p>`. These are essential for structuring your content." },
+                        { id: "html-elements", title: "HTML Elements", content: "Explore the various building blocks of HTML pages. An HTML element is defined by a start tag, some content, and an end tag. For example, `<p>This is a paragraph.</p>` is an element." },
+                        { id: "html-attributes", title: "HTML Attributes", content: "Attributes provide additional information about HTML elements. They are always specified in the start tag and usually come in name/value pairs like: `href='value'` for links or `src='image.jpg'` for images." },
+                        { id: "html-layout", title: "HTML Page Layout", content: "Learn how to structure the overall layout of a webpage using semantic HTML5 elements like `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, and `<footer>`. This improves readability and accessibility." },
+                        { id: "html-forms", title: "HTML Forms", content: "HTML forms are used to collect user input. The `<form>` element acts as a container for various input elements like text fields, checkboxes, radio buttons, submit buttons, and more. Forms are crucial for user interaction on websites." },
+                        { id: "html-graphics", title: "HTML Graphics (Canvas & SVG)", content: "HTML provides ways to draw graphics, primarily using the `<canvas>` element for drawing dynamic 2D graphics via JavaScript, or SVG (Scalable Vector Graphics) for vector-based drawings that scale well without losing quality. These allow for interactive charts, games, and complex illustrations." },
+                        { id: "html-media", title: "HTML Media (Audio & Video)", content: "Integrate multimedia into your webpages with HTML. The `<audio>` and `<video>` tags allow you to embed audio and video content directly, making your site more engaging. You can control playback, volume, and more using attributes." },
+                        { id: "html-editors", title: "HTML Editors", content: "To write HTML code, you can use any text editor, from simple ones like Notepad (Windows) or TextEdit (Mac) to more advanced IDEs (Integrated Development Environments) like VS Code, Sublime Text, or Atom, which offer features like syntax highlighting, auto-completion, and live preview." },
+                        { id: "html-references", title: "HTML References", content: "Refer to comprehensive HTML documentation like MDN Web Docs or W3Schools for a complete list of tags, attributes, and best practices. These resources are invaluable for looking up specific elements or understanding new features and their usage." },
+                        { id: "css-introduction", title: "CSS Introduction", content: "CSS (Cascading Style Sheets) is used to style the layout of Web pages. It describes how HTML elements should be displayed (colors, fonts, spacing, etc.). CSS saves a lot of work as it can control the layout of multiple web pages all at once, making design consistent and efficient." },
+                        { id: "css-selectors", title: "CSS Selectors", content: "Learn how to target specific HTML elements to apply styles using element selectors (e.g., `p {}`), ID selectors (e.g., `#myID {}`), and class selectors (e.g., `.myClass {}`). Understanding selectors is key to effective styling." },
+                        { id: "css-box-model", title: "CSS Box Model", content: "The CSS Box Model describes how HTML elements are rendered as boxes, including their content, padding, border, and margin. Understanding this model is fundamental to controlling spacing and layout on your webpages." },
+                        { id: "css-flexbox", title: "CSS Flexbox", content: "Flexbox (Flexible Box Layout) is a one-dimensional layout method for arranging items in a container, either as a row or as a column. It makes designing flexible and responsive layouts much easier, especially for distributing space among items." },
+                        { id: "css-grid", title: "CSS Grid", content: "CSS Grid Layout is a two-dimensional layout system for the web. It allows you to design complex responsive web layouts more easily and consistently, by dividing a page into rows and columns." },
+                        { id: "css-animations", title: "CSS Animations", content: "Add dynamic movement and visual flair to your webpages using CSS animations. Learn about `@keyframes` rules and properties like `animation-name`, `animation-duration`, and `animation-timing-function` to create smooth transitions and interactive effects." },
+                        { id: "responsive-design", title: "Responsive Design", content: "Responsive web design is about creating web pages that look good on all devices (desktops, tablets, and phones). It involves using flexible layouts, images, and CSS media queries to adapt the design to different screen sizes." }
                     ]
                 },
                 {
@@ -1319,9 +1210,20 @@
                     icon: "fab fa-js",
                     description: "Add fun actions and make your websites come alive with JavaScript!",
                     subtopics: [
-                        { id: "js-intro", title: "JS Introduction", content: "JavaScript is the world's most popular programming language. JavaScript is the programming language of the Web. JavaScript is easy to learn." },
-                        { id: "js-variables", title: "JS Variables", content: "Variables are containers for storing data values. In JavaScript, you can declare variables using `var`, `let`, or `const`." },
-                        { id: "js-operators", title: "JS Operators", content: "Operators are used to perform operations on variables and values. Examples include arithmetic, assignment, comparison, and logical operators." }
+                        { id: "js-intro", title: "JS Introduction", content: "JavaScript is the world's most popular programming language, primarily known as the programming language of the Web. It enables interactive and dynamic content on websites. Beyond the browser, it's also used in server-side development (Node.js) and mobile apps." },
+                        { id: "js-variables", title: "JS Variables", content: "Variables are containers for storing data values. In JavaScript, you can declare variables using `var` (older, function-scoped), `let` (reassignable, block-scoped), or `const` (constant, block-scoped) keywords. Understanding scope and hoisting is crucial." },
+                        { id: "js-operators", title: "JS Operators", content: "Operators are used to perform operations on variables and values. Examples include arithmetic (`+`, `-`, `*`, `/`), assignment (`=`, `+=`), comparison (`==`, `===`), logical (`&&`, `||`, `!`), and bitwise operators." },
+                        { id: "js-functions", title: "JS Functions", content: "Functions are blocks of code designed to perform a particular task. They allow you to reuse code, make your programs more organized, and handle specific operations. Learn about function declaration, expression, and arrow functions." },
+                        { id: "js-arrays", title: "JS Arrays", content: "Arrays are special variables that can hold more than one value at a time. They are ordered collections of data. Learn how to create, access, modify, and iterate over arrays using various built-in methods." },
+                        { id: "js-objects", title: "JS Objects", content: "Objects are collections of properties, where each property has a name (or key) and a value. They are fundamental to JavaScript and are used to represent real-world entities. Learn about object creation, property access, and methods." },
+                        { id: "js-dom", title: "JS DOM Manipulation", content: "The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page structure and allows JavaScript to access and change the content, structure, and style of a document." },
+                        { id: "js-events", title: "JS Events", content: "HTML events are 'things' that happen to HTML elements, like a button click, a page load, or a key press. JavaScript can react to these events using event listeners, making web pages interactive." },
+                        { id: "js-forms", title: "JS Forms & Validation", content: "JavaScript can interact with HTML forms to validate user input before submission, provide dynamic feedback, or even submit data asynchronously using Fetch API or XMLHttpRequest. This improves the user experience significantly." },
+                        { id: "js-graphics", title: "JS Graphics (Canvas & SVG)", content: "JavaScript can be used with HTML's `<canvas>` element to draw 2D graphics dynamically, or to manipulate SVG elements for vector graphics. This is powerful for creating interactive charts, animations, and simple games directly in the browser." },
+                        { id: "js-media", title: "JS Media Manipulation", content: "With JavaScript, you can control HTML `<audio>` and `<video>` elements, allowing you to build custom playback controls, create playlists, synchronize media with other animations, or even process audio/video streams using Web Audio API." },
+                        { id: "js-async", title: "JS Asynchronous Programming", content: "Learn about asynchronous JavaScript using callbacks, Promises, and `async/await`. This is crucial for handling operations that take time, like fetching data from a server, without freezing the user interface." },
+                        { id: "js-editors", title: "JS Editors", content: "Popular text editors and IDEs for JavaScript development include VS Code, Sublime Text, WebStorm, and Atom. These tools provide features like syntax highlighting, intelligent code completion, debugging, and integration with Node.js for backend development." },
+                        { id: "js-references", title: "JS References", content: "Key resources for JavaScript include the Mozilla Developer Network (MDN) Web Docs, ECMAScript specification, and various community-driven sites like JavaScript.info. These provide in-depth explanations of language features and APIs." }
                     ]
                 },
                 {
@@ -1330,19 +1232,43 @@
                     icon: "fab fa-python",
                     description: "Learn to code cool things with Python, a super popular language!",
                     subtopics: [
-                        { id: "python-intro", title: "Python Introduction", content: "Python is a popular programming language. It was created by Guido van Rossum, and released in 1991. It is used for: web development (server-side), software development, mathematics, system scripting." },
-                        { id: "python-syntax", title: "Python Syntax", content: "Python syntax is very simple and easy to learn. Unlike other programming languages, Python uses indentation to indicate a block of code." },
-                        { id: "python-variables", title: "Python Variables", content: "Variables are containers for storing data values. Python has no command for declaring a variable." }
+                        { id: "python-intro", title: "Python Introduction", content: "Python is a high-level, interpreted programming language, known for its readability and simplicity. Created by Guido van Rossum and released in 1991, it's widely used for web development (server-side), data science, AI, automation, and system scripting." },
+                        { id: "python-syntax", title: "Python Syntax", content: "Python syntax is very simple and easy to learn. Unlike many other programming languages, Python uses indentation (whitespace) to define code blocks, making the code clean and structured. No semicolons or curly braces are needed for blocks." },
+                        { id: "python-variables", title: "Python Variables", content: "Variables are containers for storing data values. In Python, you don't declare a variable with a specific type; the type is inferred when you assign a value to it. For example, `x = 10` creates an integer variable, and `name = 'Alice'` creates a string variable." },
+                        { id: "python-io", title: "Python Input/Output", content: "Python handles user input and output using built-in functions. `print()` is used to display output to the console, while `input()` allows you to get text input from the user during program execution. This is how your programs talk to the user." },
+                        { id: "python-control-flow", title: "Python Control Flow", content: "Control flow statements determine the order in which code is executed. Learn about `if`/`elif`/`else` for conditional execution, and `for`/`while` loops for repeating actions. These are fundamental for making decisions and automating tasks in your code." },
+                        { id: "python-functions", title: "Python Functions", content: "Functions in Python are blocks of reusable code that perform a specific task. They help organize your code, make it more readable, and prevent repetition. Learn how to define functions, pass arguments, and return values." },
+                        { id: "python-lists", title: "Python Lists", content: "Lists are ordered, changeable collections of items in Python. They are one of the most versatile data types, allowing you to store a collection of different data types (e.g., numbers, strings, other lists). Learn common list operations like adding, removing, and accessing elements." },
+                        { id: "python-dictionaries", title: "Python Dictionaries", content: "Dictionaries are unordered, changeable collections of key-value pairs in Python. They are optimized for retrieving values when you know the key. Learn how to create, access, modify, and iterate over dictionaries." },
+                        { id: "python-classes", title: "Python Classes & Objects", content: "Python is an object-oriented programming (OOP) language. Learn about classes as blueprints for creating objects, and objects as instances of those classes. This allows you to model real-world entities and build more complex, organized programs." },
+                        { id: "python-modules", title: "Python Modules", content: "Modules are Python files containing code that you can reuse in other Python programs. They help organize your code into logical, manageable units. Learn how to import and use modules to access functions and variables defined elsewhere." },
+                        { id: "python-graphics", title: "Python Graphics", content: "While Python isn't inherently a graphics language, libraries like Turtle (for simple drawing and educational purposes) and Matplotlib (for creating static, animated, and interactive visualizations like charts and plots) allow you to create graphical outputs. For game development, Pygame is a popular choice." },
+                        { id: "python-files", title: "Python File Handling", content: "Python provides robust methods for working with files, allowing you to read from and write to text files, CSVs, JSON, and more. This is essential for programs that need to store or process data persistently, like saving game scores or loading configurations." },
+                        { id: "python-editors", title: "Python Editors & IDEs", content: "Popular choices for writing Python code include general-purpose editors like VS Code and Sublime Text, and dedicated Python IDEs such as PyCharm, which offer advanced features like debugging, code analysis, and virtual environment management, making development smoother." },
+                        { id: "python-references", title: "Python References", content: "The official Python documentation is an excellent resource for detailed information on language features and standard libraries. Other valuable references include Real Python, GeeksforGeeks, and various online tutorials that cover everything from basic syntax to advanced libraries and frameworks." }
                     ]
                 },
                 {
-                    name: "Drag-and-Drop Coding (Scratch)",
-                    id: "scratch-main",
-                    icon: "fas fa-cat",
-                    description: "Start coding easily by dragging and dropping blocks, great for stories and games!",
+                    name: "PHP for Web Development",
+                    id: "php-main",
+                    icon: "fab fa-php",
+                    description: "Build dynamic websites and web applications with PHP!",
                     subtopics: [
-                        { id: "scratch-intro", title: "Scratch Introduction", content: "Scratch is a visual programming language and online community where children can program their own interactive stories, games, and animations. It's a fantastic way to learn coding basics!" },
-                        { id: "scratch-blocks", title: "Scratch Blocks", content: "Learn about different categories of Scratch blocks like Motion, Looks, Sound, Events, Control, Sensing, Operators, and Variables." }
+                        { id: "php-intro", title: "PHP Introduction", content: "PHP (Hypertext Preprocessor) is a popular general-purpose scripting language especially suited to web development. It was originally created by Rasmus Lerdorf in 1994, and is now maintained by The PHP Group. PHP code can be embedded into HTML, making it easy to create dynamic content and interact with databases." },
+                        { id: "php-syntax", title: "PHP Basic Syntax", content: "Learn the fundamental syntax of PHP, including how to open and close PHP tags (`<?php ... ?>`), write statements, add comments, and declare variables. PHP statements end with a semicolon." },
+                        { id: "php-variables", title: "PHP Variables", content: "Variables are used to store information. In PHP, a variable starts with the `$` sign, followed by the name of the variable. PHP is a loosely typed language, so you don't need to declare the data type of the variable." },
+                        { id: "php-echo-print", title: "PHP Echo and Print", content: "The `echo` and `print` statements are used to output data to the browser. While very similar, `echo` can output multiple strings and is slightly faster, whereas `print` can only output one string and returns a value." },
+                        { id: "php-data-types", title: "PHP Data Types", content: "Understand the different data types in PHP, including String, Integer, Float (or Double), Boolean, Array, Object, NULL, and Resource. Knowing data types is crucial for effective programming." },
+                        { id: "php-operators", title: "PHP Operators", content: "Operators are used to perform operations on values and variables. Learn about arithmetic (`+`, `-`, `*`, `/`), assignment (`=`, `+=`), comparison (`==`, `===`), logical (`&&`, `||`, `!`), and string (`.`, `.=`) operators." },
+                        { id: "php-control-flow", title: "PHP Control Flow", content: "Control flow statements determine the order in which code is executed. Explore `if`/`else if`/`else` for conditional logic, and `for`, `while`, `do-while`, `foreach` loops for repetition. These are essential for building dynamic scripts." },
+                        { id: "php-functions", title: "PHP Functions", content: "Functions are blocks of code that perform a specific task and can be reused. They help organize your code, make it more readable, and prevent repetition. Learn how to define custom functions, pass arguments, and return values." },
+                        { id: "php-arrays", title: "PHP Arrays", content: "Arrays are special variables that can hold more than one value at a time. Learn about indexed arrays, associative arrays (key-value pairs), and multi-dimensional arrays, along with common array manipulation functions." },
+                        { id: "php-forms", title: "PHP Forms Handling", content: "PHP is excellent for handling HTML form submissions. Learn how to collect form data using `$_GET` and `$_POST` superglobals, validate user input, and display feedback. This is fundamental for interactive web applications." },
+                        { id: "php-database", title: "PHP Database Interaction (MySQL)", content: "Learn how to connect PHP to a MySQL database using MySQLi or PDO extensions. You'll cover basic operations like inserting, selecting, updating, and deleting data, which is essential for dynamic content management systems." },
+                        { id: "php-files", title: "PHP File Handling", content: "PHP provides functions for reading from and writing to files on the server. This allows you to create, open, read, write, and close files, useful for logging, configuration, or content storage." },
+                        { id: "php-error-handling", title: "PHP Error Handling", content: "Learn how to handle errors and exceptions in PHP to make your applications more robust. This includes understanding different error levels, using `try-catch` blocks for exceptions, and setting up custom error handlers." },
+                        { id: "php-superglobals", title: "PHP Superglobals", content: "Superglobals are built-in variables that are always available in all scopes. Understand `$_GET`, `$_POST`, `$_REQUEST`, `$_SERVER`, `$_SESSION`, `$_COOKIE`, and `$_FILES` and their roles in web development." },
+                        { id: "php-oop", title: "PHP Object-Oriented Programming (OOP)", content: "Explore OOP concepts in PHP, including classes, objects, properties, methods, inheritance, and encapsulation. OOP helps in writing modular, reusable, and maintainable code for larger applications." }
                     ]
                 },
                 {
@@ -1351,8 +1277,17 @@
                     icon: "fab fa-java",
                     description: "Learn Java to create apps for computers and phones.",
                     subtopics: [
-                        { id: "java-intro", title: "Java Introduction", content: "Java is a popular, high-level, object-oriented programming language. It's widely used for enterprise-level applications, Android mobile development, and more." },
-                        { id: "java-syntax", title: "Java Basic Syntax", content: "Understand the basic structure of a Java program, including classes, main method, and statements." }
+                        { id: "java-intro", title: "Java Introduction", content: "Java is a class-based, object-oriented programming language designed to have as few implementation dependencies as possible. It's a general-purpose language intended to let application developers 'write once, run anywhere' (WORA). It's used for enterprise applications, Android mobile development, web applications, and big data." },
+                        { id: "java-syntax", title: "Java Basic Syntax", content: "Understand the fundamental structure of a Java program, including classes, methods (like `main`), statements, and data types. Java is strongly typed, meaning you must declare the type of a variable before using it." },
+                        { id: "java-io", title: "Java Input/Output", content: "Java provides powerful I/O streams for handling input and output operations, including reading user input from the console (`Scanner` class), writing output to the console (`System.out.println`), and working with files. This allows programs to interact with users and external data sources." },
+                        { id: "java-control-flow", title: "Java Control Flow", content: "Control flow statements determine the order in which code is executed. Learn about `if`/`else if`/`else` for conditional logic, and `for`, `while`, `do-while` loops for repetition. These are essential for building dynamic and responsive applications." },
+                        { id: "java-arrays", title: "Java Arrays", content: "Arrays in Java are objects that store multiple variables of the same type in a contiguous memory location. Learn how to declare, initialize, and access elements in single-dimensional and multi-dimensional arrays." },
+                        { id: "java-oop", title: "Java Object-Oriented Programming (OOP)", content: "Java is fundamentally an OOP language. Dive deeper into concepts like Encapsulation, Inheritance, Polymorphism, and Abstraction. Understanding these principles is key to writing robust, scalable, and maintainable Java applications." },
+                        { id: "java-collections", title: "Java Collections Framework", content: "The Java Collections Framework provides a unified architecture for representing and manipulating collections, such as lists, sets, and maps. Learn about `ArrayList`, `HashSet`, `HashMap`, and how to use them to store and manage groups of objects efficiently." },
+                        { id: "java-gui", title: "Java GUI & Graphics", content: "Java's AWT (Abstract Window Toolkit) and Swing are frameworks for building graphical user interfaces (GUIs). You can create windows, buttons, text fields, and draw shapes. JavaFX is a newer, more modern platform for creating rich client applications with advanced graphics capabilities." },
+                        { id: "java-media", title: "Java Multimedia", content: "Java includes APIs for handling multimedia, allowing you to play audio and video files within your applications. Libraries like JavaFX provide comprehensive support for media playback and effects, enabling rich interactive experiences and game development." },
+                        { id: "java-ides", title: "Java IDEs", content: "Integrated Development Environments (IDEs) are essential for Java development due to its compiled nature. Popular choices include IntelliJ IDEA, Eclipse, and NetBeans, offering features like code completion, refactoring, debugging, and project management." },
+                        { id: "java-references", title: "Java References", content: "The official Oracle Java documentation is the primary resource for detailed API information. Other valuable references include tutorials from Baeldung, GeeksforGeeks, and various online courses that provide practical examples and in-depth explanations of Java concepts." }
                     ]
                 },
                 {
@@ -1361,8 +1296,19 @@
                     icon: "fab fa-cuttlefish",
                     description: "Explore C++ to make fast programs and even video games.",
                     subtopics: [
-                        { id: "cpp-intro", title: "C++ Introduction", content: "C++ is a powerful, general-purpose programming language often used for game development, operating systems, and high-performance applications. It builds on the C language." },
-                        { id: "cpp-variables", title: "C++ Variables", content: "Learn how to declare and use variables in C++ for storing different types of data." }
+                        { id: "cpp-intro", title: "C++ Introduction", content: "C++ is a powerful, high-performance, general-purpose programming language developed by Bjarne Stroustrup as an extension of the C language. It supports object-oriented programming, generic programming, and imperative programming. It's widely used for system programming, game development, embedded systems, and high-performance computing." },
+                        { id: "cpp-variables", title: "C++ Variables", content: "Learn how to declare and use variables in C++ for storing different types of data (e.g., `int`, `double`, `char`, `bool`). C++ is a strongly typed language, requiring explicit type declaration before use." },
+                        { id: "cpp-io", title: "C++ Input/Output", content: "C++ uses streams for input/output operations. Commonly, `std::cin` is used for input from the console and `std::cout` for output to the console. You'll learn how to read user input and display messages effectively in your C++ programs using these streams." },
+                        { id: "cpp-control-structures", title: "C++ Control Structures", content: "Control structures dictate the flow of execution in your C++ programs. Explore `if`/`else if`/`else` for conditional branching, and `for`, `while`, `do-while` loops for repetition. These are fundamental for creating dynamic program logic." },
+                        { id: "cpp-functions", title: "C++ Functions", content: "Functions in C++ are blocks of code that perform a specific task and can be reused. They help modularize your code, making it easier to read, debug, and maintain. Learn about function declaration, definition, parameters, and return types." },
+                        { id: "cpp-arrays", title: "C++ Arrays", content: "Arrays in C++ are fixed-size sequential collections of elements of the same data type. Learn how to declare, initialize, and access elements in one-dimensional and multi-dimensional arrays. Arrays are crucial for storing collections of similar data." },
+                        { id: "cpp-pointers", title: "C++ Pointers", content: "Pointers are powerful variables in C++ that store memory addresses. They allow for direct memory manipulation, which is essential for dynamic memory allocation and efficient data structures. Understanding pointers is a key concept in C++." },
+                        { id: "cpp-classes", title: "C++ Classes & Objects", content: "C++ is an object-oriented language. Learn about classes as blueprints for creating objects, and objects as instances of those classes. Concepts like constructors, destructors, and member functions are central to object-oriented design in C++." },
+                        { id: "cpp-standard-library", title: "C++ Standard Library (STL)", content: "The C++ Standard Template Library (STL) provides a set of powerful, generic classes and functions that implement common data structures (like `vector`, `list`, `map`) and algorithms. Using STL components can significantly speed up development and improve code quality." },
+                        { id: "cpp-graphics", title: "C++ Graphics", content: "While C++ itself doesn\'t have built-in graphics capabilities, it can interact with various graphics libraries. For simple console-based \'graphics\', you can manipulate text characters. For advanced visuals, libraries like OpenGL (for 2D/3D rendering), DirectX (Windows), or SDL/SFML (for games) are commonly used." },
+                        { id: "cpp-files", title: "C++ File Handling", content: "C++ allows you to perform file operations using fstream (file stream) library, including reading from and writing to text files and binary files. This is crucial for applications that need to store configuration, logs, or user data persistently on a disk." },
+                        { id: "cpp-ides", title: "C++ IDEs", content: "For C++ development, IDEs like Visual Studio, Code::Blocks, CLion, and Eclipse CDT are commonly used. These provide robust features for compiling, debugging, and managing large C++ projects, making development more efficient and streamlined." },
+                        { id: "cpp-references", title: "C++ References", content: "The C++ Standard Library documentation, cppreference.com, and books like 'The C++ Programming Language' by Bjarne Stroustrup are authoritative sources. Online communities and tutorials also provide extensive support for learning C++ and its advanced features." }
                     ]
                 },
                 // Topics without subtopics will fall back to generic content sections
@@ -1576,6 +1522,201 @@
                         }
                     }
                 });
+            });
+
+            // Search Bar Functionality (updated with new PHP topics and removed Scratch)
+            const allSearchableItems = [];
+            allLearningTopics.forEach(topic => {
+                allSearchableItems.push({ title: topic.name, id: topic.id });
+                if (topic.subtopics) {
+                    topic.subtopics.forEach(sub => {
+                        allSearchableItems.push({ title: sub.title, id: sub.id, parentId: topic.id });
+                    });
+                }
+            });
+
+            function generateSuggestions(query) {
+                const lowerQuery = query.toLowerCase();
+                return allSearchableItems.filter(item =>
+                    item.title.toLowerCase().includes(lowerQuery)
+                ).slice(0, 5);
+            }
+
+            function showSuggestions(suggestions) {
+                searchSuggestions.innerHTML = '';
+                if (suggestions.length > 0) {
+                    suggestions.forEach(suggestion => {
+                        const div = document.createElement('div');
+                        div.classList.add('suggestion-item');
+                        div.textContent = suggestion.title;
+                        div.addEventListener('click', () => {
+                            mainSearchInput.value = suggestion.title;
+                            hideSuggestions();
+                            if (suggestion.parentId) {
+                                const parentTopic = allLearningTopics.find(t => t.id === suggestion.parentId);
+                                if (parentTopic) {
+                                    displayDetailedTutorial(parentTopic);
+                                    const subtopicIndex = parentTopic.subtopics.findIndex(sub => sub.id === suggestion.id);
+                                    if (subtopicIndex !== -1) {
+                                        displaySubtopicContent(subtopicIndex);
+                                    }
+                                }
+                            } else {
+                                const targetTopic = allLearningTopics.find(t => t.id === suggestion.id);
+                                if (targetTopic && targetTopic.subtopics) {
+                                    displayDetailedTutorial(targetTopic);
+                                } else {
+                                    const targetSection = document.getElementById(suggestion.id);
+                                    if (targetSection) {
+                                        hideAllContentSections();
+                                        targetSection.style.display = 'block';
+                                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }
+                                }
+                            }
+                        });
+                        searchSuggestions.appendChild(div);
+                    });
+                    searchSuggestions.style.display = 'block';
+                } else {
+                    searchSuggestions.style.display = 'none';
+                }
+            }
+
+            function hideSuggestions() {
+                searchSuggestions.style.display = 'none';
+            }
+
+            mainSearchInput.addEventListener('input', () => {
+                const query = mainSearchInput.value.trim();
+                if (query.length > 0) {
+                    const suggestions = generateSuggestions(query);
+                    showSuggestions(suggestions);
+                } else {
+                    hideSuggestions();
+                }
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!mainSearchInput.contains(event.target) && !searchSuggestions.contains(event.target)) {
+                    hideSuggestions();
+                }
+            });
+
+            function performSearch() {
+                const query = mainSearchInput.value.trim();
+                if (query) {
+                    const matchingTopic = allLearningTopics.find(topic =>
+                        topic.name.toLowerCase().includes(query.toLowerCase()) ||
+                        (topic.subtopics && topic.subtopics.some(sub => sub.title.toLowerCase().includes(query.toLowerCase())))
+                    );
+
+                    if (matchingTopic) {
+                        if (matchingTopic.subtopics) {
+                            displayDetailedTutorial(matchingTopic);
+                            const matchingSubtopicIndex = matchingTopic.subtopics.findIndex(sub => sub.title.toLowerCase().includes(query.toLowerCase()));
+                            if (matchingSubtopicIndex !== -1) {
+                                displaySubtopicContent(matchingSubtopicIndex);
+                            }
+                        } else {
+                            const targetSection = document.getElementById(matchingTopic.id);
+                            if (targetSection) {
+                                hideAllContentSections();
+                                targetSection.style.display = 'block';
+                                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        }
+                    } else {
+                        const messageBox = document.createElement('div');
+                        messageBox.style.cssText = `
+                            position: fixed;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            background-color: #fff;
+                            padding: 20px;
+                            border-radius: 8px;
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                            z-index: 2000;
+                            text-align: center;
+                            font-family: 'Inter', sans-serif;
+                            color: #333;
+                        `;
+                        messageBox.innerHTML = `
+                            <p>No results found for "${query}".</p>
+                            <button style="
+                                background-color: #28a745;
+                                color: #fff;
+                                border: none;
+                                padding: 8px 15px;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                margin-top: 10px;
+                            " onclick="this.parentNode.remove()">OK</button>
+                        `;
+                        document.body.appendChild(messageBox);
+
+                        if (body.classList.contains('dark-mode')) {
+                            messageBox.style.backgroundColor = '#3a3a3a';
+                            messageBox.style.color = '#e0e0e0';
+                            messageBox.querySelector('button').style.backgroundColor = '#218838';
+                        }
+                    }
+                } else {
+                    const messageBox = document.createElement('div');
+                    messageBox.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background-color: #fff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                        z-index: 2000;
+                        text-align: center;
+                        font-family: 'Inter', sans-serif;
+                        color: #333;
+                    `;
+                    messageBox.innerHTML = `
+                        <p>Please enter a search term!</p>
+                        <button style="
+                            background-color: #28a745;
+                            color: #fff;
+                            border: none;
+                            padding: 8px 15px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            margin-top: 10px;
+                        " onclick="this.parentNode.remove()">OK</button>
+                    `;
+                    document.body.appendChild(messageBox);
+
+                    if (body.classList.contains('dark-mode')) {
+                        messageBox.style.backgroundColor = '#3a3a3a';
+                        messageBox.style.color = '#e0e0e0';
+                        messageBox.querySelector('button').style.backgroundColor = '#218838';
+                    }
+                }
+            }
+
+            mainSearchInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            searchIcon.addEventListener('click', performSearch);
+
+            // "Try It Yourself" button functionality
+            tryItButton.addEventListener('click', () => {
+                const rawCode = htmlCodeExample.textContent
+                                .replace(/&lt;/g, '<')
+                                .replace(/&gt;/g, '>')
+                                .trim();
+                const newWindow = window.open('', '_blank');
+                newWindow.document.write(rawCode);
+                newWindow.document.close();
             });
 
             // Ensure a clean state on initial load
