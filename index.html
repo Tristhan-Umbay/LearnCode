@@ -386,47 +386,84 @@
             background-color: #555;
         }
 
-        /* Removed .code-example-container from homepage as it's now dynamic */
+        /* Code Example Container for the Homepage */
         .code-example-container {
-            display: none; /* Hide this section from the homepage */
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            display: flex; /* Use flex for internal layout */
+            flex-direction: column;
+            justify-content: space-between; /* Push button to bottom */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
+        body.dark-mode .code-example-container {
+            background-color: #2c2c2c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
 
-        .code-block {
-            background-color: #f0f0f0;
-            border-left: 5px solid #28a745;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 15px;
-            white-space: pre-wrap;
-            margin-bottom: 20px;
-            overflow-x: auto;
+        .code-example-container h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
             color: #333;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        body.dark-mode .code-block {
-            background-color: #222;
-            color: #eee;
+        body.dark-mode .code-example-container h3 {
+            color: #e0e0e0;
         }
+
+        /* Styles for the code editor textarea */
+        .code-editor-textarea {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9rem;
+            background-color: #2d2d2d; /* Dark background for code */
+            color: #f8f8f2; /* Light text for code */
+            border-radius: 0.5rem; /* Rounded corners */
+            padding: 1rem;
+            resize: vertical; /* Allow vertical resizing */
+            min-height: 150px;
+            overflow-y: auto; /* Scroll if content overflows */
+            width: 100%; /* Take full width of parent */
+            border: 1px solid #3a3a3a; /* Darker border for editor */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        /* Styles for the output iframe */
+        .code-output-iframe {
+            width: 100%;
+            height: 150px; /* Default height, will adjust */
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background-color: #ffffff;
+            margin-top: 1rem;
+        }
+        body.dark-mode .code-output-iframe {
+            background-color: #1a1a1a;
+            border-color: #555;
+        }
+
 
         .try-it-button {
-            background-color: #28a745;
-            color: #fff;
+            background-color: #28a745; /* Green background */
+            color: #fff; /* White text */
             border: none;
             padding: 10px 20px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             font-size: 16px;
-            align-self: flex-start;
+            align-self: flex-start; /* Align button to the start (left) */
             transition: background-color 0.3s ease;
             margin-top: 15px; /* Added margin to separate from code block */
         }
 
         .try-it-button:hover {
-            background-color: #218838;
+            background-color: #218838; /* Darker green on hover */
         }
 
         /* All Topics Section Styling */
@@ -756,6 +793,194 @@
             cursor: not-allowed;
         }
 
+        /* New Features Section Styles */
+        .features-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .features-section {
+            background-color: #2c2c2c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .features-section h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .features-section h2 {
+            color: #e0e0e0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .feature-card {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .feature-card {
+            background-color: #3a3a3a;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .feature-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card i {
+            font-size: 50px;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .feature-card h4 {
+            color: #e0e0e0;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .feature-card p {
+            color: #ccc;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+            z-index: 2000; /* Above all other content */
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.visible {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            text-align: center;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.visible .modal-content {
+            transform: translateY(0);
+        }
+
+        body.dark-mode .modal-content {
+            background-color: #2c2c2c;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-button:hover {
+            color: #333;
+        }
+
+        body.dark-mode .modal-close-button {
+            color: #ccc;
+        }
+
+        body.dark-mode .modal-close-button:hover {
+            color: #e0e0e0;
+        }
+
+        .modal-content h2 {
+            font-size: 28px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .modal-content h2 {
+            color: #e0e0e0;
+        }
+
+        .modal-content p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        body.dark-mode .modal-content p {
+            color: #ccc;
+        }
+
+        .modal-content button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            background-color: #218838;
+        }
+
 
         /* Responsive Adjustments for smaller screens */
         @media (max-width: 768px) {
@@ -839,6 +1064,10 @@
             .tutorial-content-area {
                 padding: 20px;
             }
+
+            .features-grid {
+                grid-template-columns: 1fr; /* Stack features on small screens */
+            }
         }
 
         @media (max-width: 480px) {
@@ -901,7 +1130,7 @@
         <div class="header-right">
             <button class="icon-button"><i class="fas fa-bell"></i></button>
             <button class="icon-button" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-            <button class="sign-in-button">Sign In</button>
+            <button class="sign-in-button" id="signInButton">Sign In</button>
         </div>
     </header>
 
@@ -923,13 +1152,44 @@
                     <a href="#" class="language-button secondary" id="viewAllTopicsButton">View All Topics</a>
                 </div>
             </div>
-            <!-- Removed the static code example container from the homepage -->
+            <!-- Start of the HTML Basic Structure code editor on the right side -->
             <div class="code-example-container">
                 <h3>HTML Example: Basic Structure</h3>
-                <pre class="code-block" id="htmlCodeExample"></pre>
-                <button class="try-it-button" id="tryItButtonHomepage">Try It Yourself</button>
+                <textarea class="code-editor-textarea" id="homepageCodeEditor" spellcheck="false"></textarea>
+                <button class="try-it-button" id="homepageRunButton">Run Code</button>
+                <h4 style="margin-top: 1rem; margin-bottom: 0.5rem; color: grey;">Output:</h4>
+                <iframe class="code-output-iframe" id="homepageOutputIframe"></iframe>
+            </div>
+            <!-- End of the HTML Basic Structure code editor on the right side -->
+        </section>
+
+        <!-- New section for features/design elements -->
+        <section class="features-section">
+            <h2>Why Learn with Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>Interactive Lessons</h4>
+                    <p>Hands-on coding exercises and live examples to help you learn by doing.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h4>Expert Instructors</h4>
+                    <p>Learn from experienced developers and educators who simplify complex topics.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Supportive Community</h4>
+                    <p>Connect with other learners, ask questions, and collaborate on projects.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>Flexible Learning</h4>
+                    <p>Learn at your own pace, anytime, anywhere, with access to all resources.</p>
+                </div>
             </div>
         </section>
+
 
         <section class="all-topics-section" id="allTopicsSection">
             <h2>All Learning Topics</h2>
@@ -957,7 +1217,6 @@
         <section id="blog-section" class="content-section">
             <h2>Our Blog</h2>
             <p>Welcome to our blog! Here you'll find the latest articles, coding tips, and news from the programming world. Stay updated with new technologies and best practices.</p>
-            <p>Check out our latest posts:</p>
             <ul>
                 <li>"Top 5 Tips for Beginner Coders"</li>
                 <li>"Understanding Web Accessibility"</li>
@@ -969,7 +1228,6 @@
         <section id="community-forum-section" class="content-section">
             <h2>Community Forum</h2>
             <p>Join our vibrant community forum! Ask questions, share your projects, and connect with other learners and experienced developers. It's a great place to get help and collaborate.</p>
-            <p>Popular categories:</p>
             <ul>
                 <li>General Discussions</li>
                 <li>Help & Support</li>
@@ -982,7 +1240,6 @@
         <section id="faqs-section" class="content-section">
             <h2>Frequently Asked Questions</h2>
             <p>Have questions? We've got answers! Browse our FAQs to find solutions to common queries about our platform, courses, and coding in general.</p>
-            <p>Common questions include:</p>
             <ul>
                 <li>How do I start learning?</li>
                 <li>What programming language should I learn first?</li>
@@ -994,7 +1251,6 @@
         <section id="contact-us-section" class="content-section">
             <h2>Contact Us</h2>
             <p>Need to get in touch? Fill out the form below or reach out to us directly. We're here to help you on your coding journey!</p>
-            <p>You can reach us via:</p>
             <ul>
                 <li>Email: support@codespark.com</li>
                 <li>Phone: (123) 456-7890</li>
@@ -1006,7 +1262,6 @@
         <section id="how-websites-work-section" class="content-section">
             <h2>How Websites Work</h2>
             <p>Ever wonder what happens when you type a website address? This section explains the magic behind it! You'll learn about web browsers, servers, and how information travels across the internet.</p>
-            <p>Key concepts:</p>
             <ul>
                 <li>What is a web server?</li>
                 <li>How does your browser get a website?</li>
@@ -1018,7 +1273,6 @@
         <section id="organize-your-data-section" class="content-section">
             <h2>Organize Your Data</h2>
             <p>When you have a lot of information, like a list of friends or game scores, you need smart ways to keep it organized. This topic teaches you different ways to store and manage data so it's easy to find and use.</p>
-            <p>Learn about:</p>
             <ul>
                 <li>Lists and simple collections.</li>
                 <li>Storing information in a structured way.</li>
@@ -1030,7 +1284,6 @@
         <section id="problem-solving-steps-section" class="content-section">
             <h2>Problem Solving Steps</h2>
             <p>Coding is all about solving problems! This section gives you a step-by-step guide to thinking like a programmer. You'll learn how to break down big challenges into smaller, manageable pieces.</p>
-            <p>You'll practice:</p>
             <ul>
                 <li>Understanding the problem.</li>
                 <li>Planning your solution.</li>
@@ -1042,7 +1295,6 @@
         <section id="make-your-own-games-section" class="content-section">
             <h2>Make Your Own Games</h2>
             <p>Dream of creating your own video games? This topic introduces you to the exciting world of game design and development. You'll learn the basic ideas behind making fun and engaging games.</p>
-            <p>Explore:</p>
             <ul>
                 <li>Game ideas and rules.</li>
                 <li>Characters and levels.</li>
@@ -1054,7 +1306,6 @@
         <section id="build-phone-apps-section" class="content-section">
             <h2>Build Phone Apps</h2>
             <p>Want to create apps for smartphones and tablets? This section gives you an introduction to what it takes to build applications that run on mobile devices. It's a big world, but we'll start with the basics!</p>
-            <p>Learn about:</p>
             <ul>
                 <li>Basic app ideas.</li>
                 <li>How apps are different from websites.</li>
@@ -1066,7 +1317,6 @@
         <section id="database-management-section" class="content-section">
             <h2>Database Management</h2>
             <p>Imagine a giant digital filing cabinet where websites keep all their information, like user names, passwords, or product details. This section teaches you how these "databases" work and how to store and get information from them.</p>
-            <p>You'll learn about:</p>
             <ul>
                 <li>What a database is.</li>
                 <li>How to put information in.</li>
@@ -1077,18 +1327,38 @@
 
     </main>
 
+    <!-- Sign-in/Sign-up Modal HTML -->
+    <div id="signInModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeModalButton">&times;</button>
+            <h2>Welcome to LearnCode!</h2>
+            <p>Sign in or sign up to save your progress and unlock more features!</p>
+            <!-- You would add actual form fields here for email/password, etc. -->
+            <button>Get Started</button>
+        </div>
+    </div>
+
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mainSearchInput = document.getElementById('mainSearchInput');
             const searchIcon = document.getElementById('searchIcon');
             const searchSuggestions = document.getElementById('searchSuggestions');
-            // Removed tryItButton and htmlCodeExample from homepage as they are now dynamic within lessons
+            const homepageCodeEditor = document.getElementById('homepageCodeEditor');
+            const homepageRunButton = document.getElementById('homepageRunButton');
+            const homepageOutputIframe = document.getElementById('homepageOutputIframe');
             const viewAllTopicsButton = document.getElementById('viewAllTopicsButton');
             const startLearningNowButton = document.getElementById('startLearningNowButton');
             const allTopicsSection = document.getElementById('allTopicsSection');
             const topicsGrid = document.getElementById('topicsGrid');
             const closeTopicsButton = document.getElementById('closeTopicsButton');
             const backToHomeButtons = document.querySelectorAll('.back-to-home-button');
+
+            // Modal elements
+            const signInButton = document.getElementById('signInButton');
+            const signInModal = document.getElementById('signInModal');
+            const closeModalButton = document.getElementById('closeModalButton');
+
 
             // New elements for dynamic tutorial content
             const dynamicTutorialContainer = document.getElementById('dynamicTutorialContainer');
@@ -1133,6 +1403,58 @@
                 }
             });
 
+            // Initial HTML code for the homepage editor
+            const initialHomepageHtmlCode = `<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Page</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This is a basic HTML page.</p>
+</body>
+</html>`;
+
+            // Set the initial HTML code for the homepage editor
+            homepageCodeEditor.value = initialHomepageHtmlCode;
+
+            // Function to run the code in the homepage editor
+            function runHomepageCode() {
+                const code = homepageCodeEditor.value;
+                homepageOutputIframe.innerHTML = ''; // Clear previous output
+
+                try {
+                    // Get the iframe's document
+                    const iframeDoc = homepageOutputIframe.contentDocument || homepageOutputIframe.contentWindow.document;
+
+                    // Write the user's code into the iframe
+                    iframeDoc.open();
+                    iframeDoc.write(code);
+                    iframeDoc.close();
+
+                    // Adjust iframe height to content
+                    homepageOutputIframe.onload = () => {
+                        // Set min-height to prevent it from collapsing if content is small
+                        homepageOutputIframe.style.minHeight = '100px';
+                        // Adjust height based on content, or set a max-height
+                        homepageOutputIframe.style.height = homepageOutputIframe.contentWindow.document.body.scrollHeight + 'px';
+                        // Ensure it doesn't exceed a reasonable max height
+                        if (homepageOutputIframe.offsetHeight > 300) { // Limit height for homepage demo
+                            homepageOutputIframe.style.height = '300px';
+                        }
+                    };
+
+                } catch (error) {
+                    // Display any errors in the output area
+                    homepageOutputIframe.contentDocument.body.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                    console.error("Code execution error:", error);
+                }
+            }
+
+            // Run the initial code on page load
+            runHomepageCode();
+
+
             // All Topics data with subtopics
             const allLearningTopics = [
                 {
@@ -1141,8 +1463,8 @@
                     icon: "fab fa-html5",
                     description: "Make your own web pages! HTML builds the page, and CSS makes it look good.",
                     subtopics: [
-                        { id: "html-intro", title: "HTML Introduction", content: "<h1> What is HTML?</h1> <br> :HTML stands for Hyper Text Markup Language <br> :HTML is the standard markup language for creating Web pages <br> :HTML describes the structure of a Web page <br> :HTML consists of a series of elements <br> :HTML elements tell the browser how to display the content <br> <br> <br> <h1>A Simple HTML Document</h1> <pre>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My Web Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello, World!&lt;/h1&gt;\n  &lt;p&gt;This is a simple paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</pre> <br> <br> Example Explained <br> <br> :The &lt;!DOCTYPE html&gt declaration defines that this document is an HTML5 document <br> <br> :The &lt;html&gt element is the root element of an HTML page <br> <br> :The &lt;head&gt element contains meta information about the HTML page <br> <br>  :The &lt;title&gt element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab) <br> <br> :The  &lt;body&gt element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables, lists, etc. <br> <br>  :The &lt;h1&gt element defines a large heading <br> <br> :The &lt;p&gt element defines a paragraph " },
-                        { id: "html-basic", title: "HTML Basic", content: "<h1>HTML Documents</h1> All HTML documents must start with a document type declaration: &lt;!DOCTYPE html&gt;. <br> <br> The HTML document itself begins with &lt;html&gt and ends with &lt;/html&gt;. <br> <br> The visible part of the HTML document is between &lt;body&gt and &lt;/body&gt. <br> <br> <pre><code>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My First HTML Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;My First Heading&lt;/h1&gt;\n  &lt;p&gt;My first paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</code></pre> <button class=\"try-it-button\" data-code-id=\"html-basic-example\">Try it Yourself</button>" },
+                        { id: "html-intro", title: "HTML Introduction", content: "<h1> What is HTML?</h1> <br> :HTML stands for Hyper Text Markup Language <br> :HTML is the standard markup language for creating Web pages <br> :HTML describes the structure of a Web page <br> :HTML consists of a series of elements <br> :HTML elements tell the browser how to display the content <br> <br> <br> <h1>A Simple HTML Document</h1> <pre><code>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My Web Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;Hello, World!&lt;/h1&gt;\n  &lt;p&gt;This is a simple paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</code></pre> <br> <br> Example Explained <br> <br> :The &lt;!DOCTYPE html&gt declaration defines that this document is an HTML5 document <br> <br> :The &lt;html&gt element is the root element of an HTML page <br> <br> :The &lt;head&gt element contains meta information about the HTML page <br> <br>  :The &lt;title&gt element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab) <br> <br> :The  &lt;body&gt element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables, lists, etc. <br> <br>  :The &lt;h1&gt element defines a large heading <br> <br> :The &lt;p&gt element defines a paragraph " },
+                        { id: "html-basic", title: "HTML Basic", content: "<h1>HTML Documents</h1> All HTML documents must start with a document type declaration: &lt;!DOCTYPE html&gt;. <br> <br> The HTML document itself begins with &lt;html&gt and ends with &lt;/html&gt;. <br> <br> The visible part of the HTML document is between &lt;body&gt and &lt;/body&gt. <br> <br> <pre><code>&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;My First HTML Page&lt;/title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;h1&gt;My First Heading&lt;/h1&gt;\n  &lt;p&gt;My first paragraph.&lt;/p&gt;\n&lt;/body&gt;\n&lt;/html&gt;</code></pre> <button class=\"try-it-button\" data-code-id=\"html-basic-example\">Try it Yourself</button> <br> <br> <br> <h1>HTML Headings</h1>" },
                         { id: "html-elements", title: "HTML Elements", content: "Explore the various building blocks of HTML pages. An HTML element is defined by a start tag, some content, and an end tag. For example, `<p>This is a paragraph.</p>` is an element." },
                         { id: "html-attributes", title: "HTML Attributes", content: "Attributes provide additional information about HTML elements. They are always specified in the start tag and usually come in name/value pairs like: `href='value'` for links or `src='image.jpg'` for images." },
                         { id: "html-layout", title: "HTML Page Layout", content: "Learn how to structure the overall layout of a webpage using semantic HTML5 elements like `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, and `<footer>`. This improves readability and accessibility." },
@@ -1215,7 +1537,7 @@
                         { id: "php-variables", title: "PHP Variables", content: "Variables are used to store information. In PHP, a variable starts with the `$` sign, followed by the name of the variable. PHP is a loosely typed language, so you don't need to declare the data type of the variable." },
                         { id: "php-echo-print", title: "PHP Echo and Print", content: "The `echo` and `print` statements are used to output data to the browser. While very similar, `echo` can output multiple strings and is slightly faster, whereas `print` can only output one string and returns a value." },
                         { id: "php-data-types", title: "PHP Data Types", content: "Understand the different data types in PHP, including String, Integer, Float (or Double), Boolean, Array, Object, NULL, and Resource. Knowing data types is crucial for effective programming." },
-                        { id: "php-operators", title: "PHP Operators", content: "Operators are used to perform operations on values and variables. Learn about arithmetic (`+`, `-`, `*`, `/`), assignment (`=`, `+=`), comparison (`==`, `===`), logical (`&&`, `||`, `!`), and string (`.`, `.=`) operators." },
+                        { id: "php-operators", title: "PHP Operators", content: "Operators are used to perform operations on values and variables. Examples include arithmetic (`+`, `-`, `*`, `/`), assignment (`=`, `+=`), comparison (`==`, `===`), logical (`&&`, `||`, `!`), and string (`.`, `.=`) operators." },
                         { id: "php-control-flow", title: "PHP Control Flow", content: "Control flow statements determine the order in which code is executed. Explore `if`/`else if`/`else` for conditional logic, and `for`, `while`, `do-while`, `foreach` loops for repetition. These are essential for building dynamic scripts." },
                         { id: "php-functions", title: "PHP Functions", content: "Functions are blocks of code that perform a specific task and can be reused. They help organize your code, make it more readable, and prevent repetition. Learn how to define custom functions, pass arguments, and return values." },
                         { id: "php-arrays", title: "PHP Arrays", content: "Arrays are special variables that can hold more than one value at a time. Learn about indexed arrays, associative arrays (key-value pairs), and multi-dimensional arrays, along with common array manipulation functions." },
@@ -1276,7 +1598,6 @@
                 { name: "Database Management", id: "database-management-section", icon: "fas fa-database", description: "Understand how to save and get back information using databases." },
                 { name: "Blog", id: "blog-section", icon: "fas fa-blog", description: "Our latest articles and coding tips." },
                 { name: "Community Forum", id: "community-forum-section", icon: "fas fa-users", description: "Connect with other learners and developers." },
-                { name: "FAQs", id: "faqs-section", icon: "fas fa-question-circle", description: "Find answers to common questions." },
                 { name: "Contact Us", id: "contact-us-section", icon: "fas fa-envelope", description: "Get in touch with our support team." }
             ];
 
@@ -1372,7 +1693,35 @@
                             newWindow.document.write(rawCode);
                             newWindow.document.close();
                         } else {
-                            alert('No code example found for this "Try it Yourself" button.');
+                            // Using a simple message box (not a full custom modal for this simple case)
+                            const messageBox = document.createElement('div');
+                            messageBox.style.cssText = `
+                                position: fixed;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                background-color: #fff;
+                                padding: 20px;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                                z-index: 2000;
+                                text-align: center;
+                                font-family: 'Inter', sans-serif;
+                                color: #333;
+                            `;
+                            messageBox.innerHTML = `
+                                <p>No code example found for this "Try it Yourself" button.</p>
+                                <button style="
+                                    background-color: #28a745;
+                                    color: #fff;
+                                    border: none;
+                                    padding: 8px 15px;
+                                    border-radius: 5px;
+                                    cursor: pointer;
+                                    margin-top: 10px;
+                                " onclick="this.parentNode.remove()">OK</button>
+                            `;
+                            document.body.appendChild(messageBox);
                         }
                     });
                 }
@@ -1684,8 +2033,25 @@
 
             searchIcon.addEventListener('click', performSearch);
 
-            // Removed the static "Try It Yourself" button and its listener from the homepage
-            // tryItButton.addEventListener('click', ...);
+            // Add event listener for the homepage "Run Code" button
+            homepageRunButton.addEventListener('click', runHomepageCode);
+
+            // Modal functionality
+            signInButton.addEventListener('click', () => {
+                signInModal.classList.add('visible');
+            });
+
+            closeModalButton.addEventListener('click', () => {
+                signInModal.classList.remove('visible');
+            });
+
+            // Close modal if clicking outside the content
+            signInModal.addEventListener('click', (event) => {
+                if (event.target === signInModal) {
+                    signInModal.classList.remove('visible');
+                }
+            });
+
 
             // Ensure a clean state on initial load
             hideAllContentSections();
